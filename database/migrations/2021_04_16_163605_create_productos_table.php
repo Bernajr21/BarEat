@@ -13,6 +13,8 @@ class CreateProductosTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
+
         Schema::create('productos', function (Blueprint $table) {
             $table->id();
             
@@ -32,6 +34,7 @@ class CreateProductosTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('productos');
     }
 }

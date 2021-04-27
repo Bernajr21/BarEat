@@ -13,12 +13,14 @@ class CreateAnunciosTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
+
         Schema::create('anuncios', function (Blueprint $table) {
             $table->id();
             
             $table->string('titulo_anuncio');
             $table->text('descripcion_anuncio');
-            $table->foreignId('establecimiento_id');
+            $table->foreignId('establecimiento_id')->constrained('establecimientos');
 
             $table->timestamps();
         });
@@ -31,6 +33,7 @@ class CreateAnunciosTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('anuncios');
     }
 }

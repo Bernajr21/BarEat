@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTipoUsuarioTable extends Migration
+class CreateTipoUsuariosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,6 +13,8 @@ class CreateTipoUsuarioTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
+        
         Schema::create('tipo_usuarios', function (Blueprint $table) {
             $table->id();
             $table->string('tipo');
@@ -27,6 +29,7 @@ class CreateTipoUsuarioTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('tipo_usuarios');
     }
 }

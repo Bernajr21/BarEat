@@ -13,10 +13,12 @@ class CreatePuntuacionProductosTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
+        
         Schema::create('puntuacion_productos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('usuario_id');
-            $table->foreignId('producto_id');
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('producto_id')->constrained('productos');
             $table->integer('puntuacion_producto');
             $table->timestamps();
         });
@@ -29,6 +31,7 @@ class CreatePuntuacionProductosTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('puntuacion_productos');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsuarioTiposTable extends Migration
+class CreateCartasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,14 @@ class CreateUsuarioTiposTable extends Migration
      */
     public function up()
     {
-        Schema::create('usuario_tipo', function (Blueprint $table) {
+        Schema::disableForeignKeyConstraints();
+        
+        Schema::create('cartas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('usuario_tipo_id');
-            $table->foreignId('usuario_id');
+            
+            $table->foreignId('establecimiento_id')->constrained('establecimientos');
+            $table->foreignId('producto_id')->constrained('productos');
+
             $table->timestamps();
         });
     }
@@ -28,6 +32,7 @@ class CreateUsuarioTiposTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('usuario_tipo');
+        Schema::disableForeignKeyConstraints();
+        Schema::dropIfExists('cartas');
     }
 }

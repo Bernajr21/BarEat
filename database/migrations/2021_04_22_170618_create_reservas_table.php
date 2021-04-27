@@ -13,10 +13,12 @@ class CreateReservasTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
+        
         Schema::create('reservas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('usuario_id');
-            $table->foreignId('establecimiento_id');
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('establecimiento_id')->constrained('establecimientos');
             $table->integer('num_comensales');
             $table->date('fecha');
             $table->time('hora');
@@ -31,6 +33,7 @@ class CreateReservasTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('reservas');
     }
 }

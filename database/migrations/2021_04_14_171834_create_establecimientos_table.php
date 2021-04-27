@@ -13,6 +13,8 @@ class CreateEstablecimientosTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
+
         Schema::create('establecimientos', function (Blueprint $table) {
             $table->id();
             
@@ -27,7 +29,7 @@ class CreateEstablecimientosTable extends Migration
             $table->integer('aforo');
             $table->string('ruta_foto_principal');
             $table->integer('puntuacion_media_establecimiento');
-            $table->foreignId('propietario_id');
+            $table->foreignId('user_id')->constrained('users');
             $table->boolean('es_premium');
 
             $table->timestamps();
@@ -42,6 +44,7 @@ class CreateEstablecimientosTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('establecimientos');
     }
 }

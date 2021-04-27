@@ -13,6 +13,8 @@ class CreateImagenesTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
+
         Schema::create('imagenes', function (Blueprint $table) {
             $table->id();
 
@@ -20,9 +22,9 @@ class CreateImagenesTable extends Migration
             $table->text('descripcion_imagen');
             $table->double('ancho');
             $table->double('alto');
-            $table->foreignId('establecimiento_id');
-            $table->foreignId('producto_id');
-            $table->foreignId('anuncio_id');
+            $table->foreignId('establecimiento_id')->constrained('establecimientos');
+            $table->foreignId('producto_id')->constrained('productos');
+            $table->foreignId('anuncio_id')->constrained('anuncios');
             
             $table->timestamps();
         });
@@ -35,6 +37,7 @@ class CreateImagenesTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('imagenes');
     }
 }

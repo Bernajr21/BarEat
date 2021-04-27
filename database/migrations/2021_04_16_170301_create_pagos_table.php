@@ -12,11 +12,13 @@ class CreatePagosTable extends Migration
      * @return void
      */
     public function up()
-    {
+    {        
+        Schema::disableForeignKeyConstraints();
+
         Schema::create('pagos', function (Blueprint $table) {
             $table->id();
             
-            $table->foreignId('establecimiento_id');
+            $table->foreignId('establecimiento_id')->constrained('establecimientos');
 
             $table->timestamps();
         });
@@ -29,6 +31,7 @@ class CreatePagosTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('pagos');
     }
 }
