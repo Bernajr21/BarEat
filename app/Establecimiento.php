@@ -18,29 +18,33 @@ class Establecimiento extends Model
         'created_at', 'updated_at',
     ];
 
-    //Obtenemos las reservas realizadas en este establecimiento
+    //Obtenemos las reservas realizadas en el establecimiento
     public function reservas()
     {
         return $this->hasMany('App\Reserva');
     }
 
+    //Obtenemos los productos que se ofrecen en el establecimiento
     public function productos_carta(){
-        return $this->hasOneThrough('App\Producto', 'App\Carta');
+        return $this->hasManyThrough('App\Producto', 'App\Carta');
     }
 
+    //Obtenemos las puntuaciones que tiene el establecimiento
     public function puntuaciones_establecimiento(){
-        return $this->hasMany('App\Puntuacion_establecimiento');
-
+        return $this->hasMany('App\Puntuacion_Establecimiento');
     }
 
+    //Obtenemos las imágenes del establecimiento
     public function imagenes(){
         return $this->hasMany('App\Imagenes');
     }
 
+    //Obtenemos los pagos realizados por el establecimiento
     public function pagos(){
         return $this->hasMany('App\Pago');
     }
 
+    //Obtenemos los anuncios publicados por el establecimiento
     public function anuncios(){
         return $this->hasMany('App\Anuncio');
     }

@@ -20,7 +20,16 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::apiResource('establecimientos', 'EstablecimientoController');
+Route::apiResource('establecimientos.productos', 'EstablecimientoProductoController', ['only'=>['index', 'show']]);
+//Route::apiResource('establecimientos.imagen', 'EstablecimientoImagenController', ['only'=>['index']]);
 
+Route::apiResource('usuarios', 'UserController');
+
+Route::apiResource('reservas', 'ReservaController');
+
+Route::apiResource('imagen', 'ImagenController', ['only'=>['store','show', 'destroy']]);
+
+Route::apiResource('reservas', 'ReservaController');
 //Route::apiResource('users.libros', 'UserLibroController', ['only'=>['index',]]);
 //Route::post('login', 'UserController@login');
 
