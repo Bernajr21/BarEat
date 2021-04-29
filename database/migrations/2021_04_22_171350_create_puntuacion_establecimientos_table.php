@@ -19,7 +19,7 @@ class CreatePuntuacionEstablecimientosTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('establecimiento_id')->constrained('establecimientos');
-            $table->integer('puntuacion_establecimiento');
+            $table->double('puntuacion_establecimiento');
             $table->text('comentario');
             $table->timestamps();
         });
