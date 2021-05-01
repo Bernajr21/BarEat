@@ -27,7 +27,7 @@ class CreateEstablecimientosTable extends Migration
             $table->integer('nif');
             $table->integer('maximo_numero_comensales');
             $table->integer('aforo');
-            $table->string('ruta_foto_principal');
+            //$table->string('ruta_foto_principal');
             $table->integer('puntuacion_media_establecimiento');
             $table->foreignId('user_id')->constrained('users');
             $table->boolean('es_premium');

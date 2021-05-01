@@ -25,6 +25,7 @@ class CreateImagenesTable extends Migration
             $table->foreignId('establecimiento_id')->constrained('establecimientos');
             $table->foreignId('producto_id')->constrained('productos');
             $table->foreignId('anuncio_id')->constrained('anuncios');
+            $table->foreignId('user_id')->constrained('users');
             
             $table->timestamps();
         });

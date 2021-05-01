@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 /*Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });*/
+//Route::post('login', 'UserController@login');
+
 
 
 Route::apiResource('establecimientos', 'EstablecimientoController');
@@ -25,6 +27,7 @@ Route::apiResource('establecimientos.puntuacion', 'EstablecimientoPuntuacionCont
 Route::apiResource('establecimientos.productos', 'EstablecimientoProductoController');
 Route::apiResource('establecimientos.productos.puntuacion', 'EstablecimientoProductoPuntuacionController', ['only'=>['index']]);
 Route::apiResource('establecimientos.reservas', 'EstablecimientoReservaController');
+Route::apiResource('establecimientos.anuncios', 'EstablecimientoAnuncioController');
 
 
 Route::apiResource('usuarios', 'UserController');
@@ -47,7 +50,7 @@ Route::apiResource('pagos', 'PagoController');
 
 
 
-//Route::apiResource('users.libros', 'UserLibroController', ['only'=>['index',]]);
-//Route::post('login', 'UserController@login');
+
+
 
 

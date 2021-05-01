@@ -15,4 +15,20 @@ class PuntuacionEstablecimiento extends Model
     protected $hidden = [
         'created_at', 'updated_at',
     ];
+
+
+    /**RELACIONES ENTRE TABLAS */
+
+    //Relación inversa de usuarios con puntuaciones de los establecimientos
+    public function usuario()
+    {
+        return $this->belongsTo('App\User');
+    }
+    
+    //Relación inversa de establecimientos con puntuaciones de los establecimientos
+    public function establecimiento()
+    {
+        return $this->belongsTo('App\Establecimiento');
+    }
+
 }

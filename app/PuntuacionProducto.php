@@ -15,4 +15,21 @@ class PuntuacionProducto extends Model
     protected $hidden = [
         'created_at', 'updated_at',
     ];
+
+
+    /**RELACIONES ENTRE TABLAS */
+
+    //Relación inversa de usuarios con puntuaciones de los productos
+    public function usuario()
+    {
+        return $this->belongsTo('App\User');
+    }
+
+    //Relación inversa de productos con puntuaciones de los productos
+    public function producto()
+    {
+        return $this->belongsTo('App\Producto');
+    }
+
+    
 }

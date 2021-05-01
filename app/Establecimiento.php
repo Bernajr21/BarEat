@@ -18,6 +18,14 @@ class Establecimiento extends Model
         'created_at', 'updated_at',
     ];
 
+    /**RELACIONES ENTRE TABLAS */
+
+    //Relación inversa entre usuarios y establecimientos
+    public function usuario()
+    {
+        return $this->belongsTo('App\User');
+    }
+
     //Obtenemos las reservas realizadas en el establecimiento
     public function reservas()
     {

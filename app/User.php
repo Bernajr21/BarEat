@@ -14,7 +14,7 @@ class User extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'apellidos', 'email', 'num_telefono', 'fecha_nacimiento', 'password',
     ];
 
     /**
@@ -23,7 +23,7 @@ class User extends Model
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'created_at', 'updated_at',
     ];
 
     /**
@@ -34,4 +34,39 @@ class User extends Model
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**RELACIONES ENTRE TABLAS */
+
+    //Relacionamos al usuario con su tipo de usuario
+    public function usuarios_tipo()
+    {
+        return $this->hasMany('App\UsuarioTipo');
+    }
+
+    //Relacionamos la tabla usuarios con la tabla establecimientos
+    public function establecimientos()
+    {
+        return $this->hasMany('App\Establecimiento');
+    }
+
+    //Relacionamos la tabla usuarios con la tabla reservas
+    public function reserva()
+    {
+        return $this->hasMany('App\ReservaTipo');
+    }
+
+    //Relación usuario - puntuaciones de los establecimientos
+    public function puntuacion_establecimientos(){
+        return $this->hasMany('App\PuntuacionEstablecimiento');
+    }
+
+    //Relación usuario - puntuaciones de los productos
+    public function puntuacion_productos(){
+        return $this->hasMany('App\PuntuacionProducto');
+    }
+
+    //Obtenemos las imágenes del usuario
+    public function imagenes(){
+        return $this->hasMany('App\Imagenes');
+    }
 }

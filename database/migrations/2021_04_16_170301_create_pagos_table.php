@@ -19,6 +19,8 @@ class CreatePagosTable extends Migration
             $table->id();
             
             $table->foreignId('establecimiento_id')->constrained('establecimientos');
+            $table->double('importe');
+            $table->string('estado');
 
             $table->timestamps();
         });

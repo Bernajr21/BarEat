@@ -16,6 +16,15 @@ class Producto extends Model
         'created_at', 'updated_at',
     ];
 
+
+    /**RELACIONES ENTRE TABLAS */
+
+    //Relación inversa de carta con productos
+    public function carta()
+    {
+        return $this->belongsTo('App\Carta');
+    }
+
     //Obtenemos las puntuaciones que tiene el producto
     public function puntuaciones_establecimiento(){
         return $this->hasMany('App\Puntuacion_establecimiento');
