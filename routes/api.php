@@ -31,7 +31,7 @@ Route::apiResource('establecimientos.anuncios', 'EstablecimientoAnuncioControlle
 
 Route::apiResource('usuarios', 'UserController');
 Route::apiResource('usuarios.tipos', 'UserTipoUsuarioController');
-Route::apiResource('usuarios.reservas', 'UserReservasController', ['only'=>['index', 'store']]);
+Route::apiResource('usuarios.reservas', 'UserReservaController', ['only'=>['index', 'store']]);
 
 //Route::apiResource('productos', 'ProductoController');
 

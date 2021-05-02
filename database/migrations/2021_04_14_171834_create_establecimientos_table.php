@@ -20,15 +20,16 @@ class CreateEstablecimientosTable extends Migration
             
             $table->string('nombre_establecimiento', 100);
             $table->text('descripcion_establecimiento');
-            $table->string('dirección_establecimiento');
-            $table->double('latitud', 8, 2);
-            $table->double('longitud', 8, 2);
+            $table->string('dirección_establecimiento')->nullable();
+            $table->integer('num_telefono');
+            $table->double('latitud', 8, 2)->nullable();
+            $table->double('longitud', 8, 2)->nullable();
             $table->string('tipo_establecimiento', 100);
-            $table->integer('nif');
+            $table->string('nif');
             $table->integer('maximo_numero_comensales');
             $table->integer('aforo');
             //$table->string('ruta_foto_principal');
-            $table->integer('puntuacion_media_establecimiento');
+            //$table->integer('puntuacion_media_establecimiento');
             $table->foreignId('user_id')->constrained('users');
             $table->boolean('es_premium');
 
