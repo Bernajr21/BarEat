@@ -8,7 +8,7 @@ class Pago extends Model
 {
     //Campos rellenables
     protected $fillable = [
-        'establecimiento_id', 'estado', 'importe', 
+        'establecimiento_id', 'importe', 'estado', 
     ];
 
     //Campos ocultos

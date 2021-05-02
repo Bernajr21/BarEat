@@ -8,7 +8,7 @@ class UsuarioTipo extends Model
 {
     //Campos rellenables
     protected $fillable = [
-        'user_id', 'tipo_usuario_id',
+        'tipo_usuario_id', 'user_id',
     ];
 
     //Campos ocultos

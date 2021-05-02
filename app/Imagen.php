@@ -9,7 +9,7 @@ class Imagen extends Model
     //Campos rellenables
     protected $fillable = [
         'ruta_imagen', 'descripcion_imagen', 'ancho', 'alto', 'establecimiento_id',
-        'producto_id', 'anuncio_id',
+        'producto_id', 'anuncio_id', 'user_id',
     ];
 
     //Campos ocultos

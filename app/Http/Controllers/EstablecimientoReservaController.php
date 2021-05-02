@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\TipoUsuario;
 use Illuminate\Http\Request;
 
-class TipoUsuarioController extends Controller
+class EstablecimientoReservaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +30,10 @@ class TipoUsuarioController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\TipoUsuario  $tipoUsuario
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(TipoUsuario $tipoUsuario)
+    public function show($id)
     {
         //
     }
@@ -43,10 +42,10 @@ class TipoUsuarioController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\TipoUsuario  $tipoUsuario
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TipoUsuario $tipoUsuario)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -54,10 +53,10 @@ class TipoUsuarioController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\TipoUsuario  $tipoUsuario
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TipoUsuario $tipoUsuario)
+    public function destroy($id)
     {
         //
     }

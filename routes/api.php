@@ -29,7 +29,6 @@ Route::apiResource('establecimientos.productos.puntuacion', 'EstablecimientoProd
 Route::apiResource('establecimientos.reservas', 'EstablecimientoReservaController');
 Route::apiResource('establecimientos.anuncios', 'EstablecimientoAnuncioController');
 
-
 Route::apiResource('usuarios', 'UserController');
 Route::apiResource('usuarios.tipos', 'UserTipoUsuarioController');
 Route::apiResource('usuarios.reservas', 'UserReservasController', ['only'=>['index', 'store']]);
