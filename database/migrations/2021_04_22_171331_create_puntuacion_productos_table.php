@@ -20,7 +20,7 @@ class CreatePuntuacionProductosTable extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('producto_id')->constrained('productos');
             $table->double('puntuacion_producto');
-            $table->text('comentario');
+            $table->text('comentario')->nullable();
             $table->timestamps();
         });
     }

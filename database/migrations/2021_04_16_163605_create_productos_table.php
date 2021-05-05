@@ -22,7 +22,8 @@ class CreateProductosTable extends Migration
             $table->text('descripcion_producto');
             $table->double('precio_producto');
             $table->string('tipo_producto', 100);
-            
+            $table->string('ruta_foto_principal')->nullable();
+
             $table->timestamps();
         });
     }

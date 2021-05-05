@@ -19,9 +19,9 @@ class CreateImagenesTable extends Migration
             $table->id();
 
             $table->string('ruta_imagen');
-            $table->text('descripcion_imagen');
-            $table->double('ancho');
-            $table->double('alto');
+            $table->text('descripcion_imagen')->nullable();
+            $table->double('ancho')->nullable();
+            $table->double('alto')->nullable();
             $table->foreignId('establecimiento_id')->constrained('establecimientos');
             $table->foreignId('producto_id')->constrained('productos');
             $table->foreignId('anuncio_id')->constrained('anuncios');

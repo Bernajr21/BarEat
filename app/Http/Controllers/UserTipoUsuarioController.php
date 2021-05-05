@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Establecimiento;
 use Illuminate\Http\Request;
 
-class EstablecimientoController extends Controller
+class UserTipoUsuarioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +13,7 @@ class EstablecimientoController extends Controller
      */
     public function index()
     {
-        return $this->showAll(Establecimiento::all());
+        //
     }
 
     /**
@@ -25,26 +24,16 @@ class EstablecimientoController extends Controller
      */
     public function store(Request $request)
     {
-        //Validación
-        $validatedData = $request->validate([
-            '' => 'required|max:255',
-            '' => 'required',
-        ]);
-
-        //Crear libro
-        $establecimiento = Establecimiento::create($request->all());
-        return response()->json([
-            'data'=>$establecimiento,
-            'message'=>'Registro realizado correctamente'], 200);
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Establecimiento  $establecimiento
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Establecimiento $establecimiento)
+    public function show($id)
     {
         //
     }
@@ -53,10 +42,10 @@ class EstablecimientoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Establecimiento  $establecimiento
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Establecimiento $establecimiento)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -64,10 +53,10 @@ class EstablecimientoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Establecimiento  $establecimiento
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Establecimiento $establecimiento)
+    public function destroy($id)
     {
         //
     }
