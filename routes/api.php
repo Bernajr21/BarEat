@@ -43,6 +43,13 @@ Route::apiResource('puntuaciones_productos', 'PuntuacionProductoController');
 
 
 
+//No le hagas caso a esto Berna. Lo he puesto yo para probar
+Route::apiResource('productos', 'ProductoController');
+
+
+
+
+
 
 
 

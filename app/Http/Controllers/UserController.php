@@ -14,7 +14,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        //Mostrar usuarios
+        $usuarios = User::all();
+        return $usuarios;
     }
 
     /**
@@ -25,7 +27,11 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Crear usuario
+        $usuario = User::create($request->all());
+        return response()->json([
+            'data'=>$usuario,
+            'message'=>'Registro realizado correctamente'], 200);
     }
 
     /**

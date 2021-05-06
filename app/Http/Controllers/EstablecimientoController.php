@@ -14,7 +14,9 @@ class EstablecimientoController extends Controller
      */
     public function index()
     {
-        return $this->showAll(Establecimiento::all());
+        //Mostrar establecimientos
+        $establecimientos = Establecimiento::all();
+        return $establecimientos;
     }
 
     /**
@@ -26,12 +28,12 @@ class EstablecimientoController extends Controller
     public function store(Request $request)
     {
         //Validación
-        $validatedData = $request->validate([
+        /*$validatedData = $request->validate([
             '' => 'required|max:255',
             '' => 'required',
-        ]);
+        ]);*/
 
-        //Crear libro
+        //Crear establecimiento
         $establecimiento = Establecimiento::create($request->all());
         return response()->json([
             'data'=>$establecimiento,

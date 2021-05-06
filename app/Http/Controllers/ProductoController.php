@@ -14,7 +14,9 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        //
+        //Mostrar productos
+        $productos = Producto::all();
+        return $productos;
     }
 
     /**
@@ -25,7 +27,11 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Crear usuario
+        $producto = Producto::create($request->all());
+        return response()->json([
+            'data'=>$producto,
+            'message'=>'Registro realizado correctamente'], 200);
     }
 
     /**
