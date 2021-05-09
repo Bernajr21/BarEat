@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Establecimiento;
 use Illuminate\Http\Request;
 
 class EstablecimientoPuntuacionController extends Controller
@@ -11,9 +12,10 @@ class EstablecimientoPuntuacionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Establecimiento $establecimiento)
     {
-        //
+        $puntuaciones = $establecimiento->puntuaciones_establecimiento()->get();
+        return $puntuaciones;
     }
 
     /**

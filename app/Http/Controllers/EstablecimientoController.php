@@ -48,7 +48,11 @@ class EstablecimientoController extends Controller
      */
     public function show(Establecimiento $establecimiento)
     {
-        //
+        //Comprobar si existe el establecimiento que estamos buscando
+        
+        //Mostrar establecimiento por id
+        return $establecimiento;
+
     }
 
     /**
@@ -60,7 +64,13 @@ class EstablecimientoController extends Controller
      */
     public function update(Request $request, Establecimiento $establecimiento)
     {
-        //
+
+        //Actualizar establecimiento
+        $establecimiento->update($request->all());
+
+        return response()->json([
+            'data'=>$establecimiento,
+            'message'=>'Actualización realizada correctamente'], 200);
     }
 
     /**
@@ -71,6 +81,11 @@ class EstablecimientoController extends Controller
      */
     public function destroy(Establecimiento $establecimiento)
     {
-        //
+        //Eliminar establecimiento
+        $establecimiento->delete();
+
+        return response()->json([
+            'data'=>$establecimiento,
+            'message'=>'Establecimiento eliminado exitosamente'], 200);
     }
 }

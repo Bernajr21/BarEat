@@ -26,8 +26,8 @@ class Producto extends Model
     }
 
     //Obtenemos las puntuaciones que tiene el producto
-    public function puntuaciones_establecimiento(){
-        return $this->hasMany('App\Puntuacion_establecimiento');
+    public function puntuaciones_producto(){
+        return $this->hasMany('App\PuntuacionProducto');
     }
 
     //Obtenemos los usuarios que han realizado la puntuación

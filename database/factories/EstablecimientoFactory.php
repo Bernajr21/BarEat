@@ -8,9 +8,6 @@ use Faker\Generator as Faker;
 $factory->define(Establecimiento::class, function (Faker $faker) {
 
     return [
-<<<<<<< Updated upstream
-        //
-=======
         'nombre_establecimiento' => $faker->company(),
         'descripcion_establecimiento' => $faker->realText($maxNbChars = 200, $indexSize = 2),
         'dirección_establecimiento' => $faker->address(),
@@ -25,6 +22,5 @@ $factory->define(Establecimiento::class, function (Faker $faker) {
         //'puntuacion_media_establecimiento' => 10,
         'user_id' => User::all()->random()->id, //solo aquellos que sean de tipo propietarios
         'es_premium' => $faker->randomElement([0, 1]),
->>>>>>> Stashed changes
     ];
 });

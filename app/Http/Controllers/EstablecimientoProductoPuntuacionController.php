@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Producto;
+use App\Establecimiento;
 use Illuminate\Http\Request;
 
 class EstablecimientoProductoPuntuacionController extends Controller
@@ -11,7 +13,7 @@ class EstablecimientoProductoPuntuacionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Establecimiento $establecimiento, Producto $producto)
     {
         //
     }

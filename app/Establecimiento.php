@@ -8,7 +8,7 @@ class Establecimiento extends Model
 {
     //Campos rellenables
     protected $fillable = [
-        'nombre_establecimiento', 'descripcion_establecimiento', 'dirección_establecimiento',
+        'nombre_establecimiento', 'descripcion_establecimiento', 'dirección_establecimiento', 'num_telefono', 'email',
         'latitud', 'longitud', 'tipo_establecimiento', 'maximo_numero_comensales', 'aforo',
         'puntuacion_media_establecimiento', /*'ruta_foto_principal',*/'nif', 'es_premium', 'user_id',
     ];
@@ -39,7 +39,7 @@ class Establecimiento extends Model
 
     //Obtenemos las puntuaciones que tiene el establecimiento
     public function puntuaciones_establecimiento(){
-        return $this->hasMany('App\Puntuacion_Establecimiento');
+        return $this->hasMany('App\PuntuacionEstablecimiento');
     }
 
     //Obtenemos las imágenes del establecimiento
