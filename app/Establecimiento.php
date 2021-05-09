@@ -44,7 +44,7 @@ class Establecimiento extends Model
 
     //Obtenemos las imágenes del establecimiento
     public function imagenes(){
-        return $this->hasMany('App\Imagenes');
+        return $this->hasMany('App\Imagen');
     }
 
     //Obtenemos los pagos realizados por el establecimiento

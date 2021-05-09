@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Imagen;
+use App\Establecimiento;
 use Illuminate\Http\Request;
 
 class EstablecimientoImagenController extends Controller
@@ -11,9 +13,12 @@ class EstablecimientoImagenController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Establecimiento $establecimiento)
     {
-        //
+        //Mostrar imágenes del establecimiento
+        $imgs = $establecimiento->imagenes()->get();
+        return $imgs;
+
     }
 
     /**
@@ -22,9 +27,23 @@ class EstablecimientoImagenController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Establecimiento $establecimiento)
     {
-        //
+        //Almacenar imagen del establecimiento
+        $establecimiento = Imagen::create([
+            'ruta_imagen' => $request['ruta_imagen'],
+            'descripcion_imagen' => $request['descripcion_imagen'],
+            'ancho' => $request['ancho'],
+            'alto' => $request['alto'],
+            'establecimiento_id' => $establecimiento->id,
+            'producto_id' => $request['producto_id'],
+            'anuncio_id' => $request['anuncio_id'],
+            'user_id' => $request['user_id'],
+        ]);
+
+        return response()->json([
+            'data'=>$establecimiento,
+            'message'=>'Registro realizado correctamente'], 200);
     }
 
     /**
@@ -33,9 +52,11 @@ class EstablecimientoImagenController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($establecimiento_id, $imagen_id)
     {
-        //
+        //Mostrar una imagen concreta de un establecimiento determinado (teniendo en cuenta sus id)
+        $imagen = Establecimiento::find($establecimiento_id)->imagenes()->find($imagen_id);
+        return $imagen;
     }
 
     /**
@@ -56,8 +77,14 @@ class EstablecimientoImagenController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($establecimiento_id, $imagen_id)
     {
-        //
+        //Eliminar imagen
+    
+        $imagen = Establecimiento::find($establecimiento_id)->imagenes()->find($imagen_id)->delete();
+
+        return response()->json([
+            'data'=>$imagen,
+            'message'=>'Imagen eliminada exitosamente'], 200);
     }
 }

@@ -17,6 +17,8 @@ class Imagen extends Model
         'created_at', 'updated_at',
     ];
 
+    protected $table = 'imagenes';
+
 
     /**RELACIONES ENTRE TABLAS */
 

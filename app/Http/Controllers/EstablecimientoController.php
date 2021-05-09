@@ -17,6 +17,7 @@ class EstablecimientoController extends Controller
         //Mostrar establecimientos
         $establecimientos = Establecimiento::all();
         return $establecimientos;
+        
     }
 
     /**
@@ -33,7 +34,7 @@ class EstablecimientoController extends Controller
             '' => 'required',
         ]);*/
 
-        //Crear establecimiento
+        //Almacenar establecimiento
         $establecimiento = Establecimiento::create($request->all());
         return response()->json([
             'data'=>$establecimiento,
@@ -79,10 +80,10 @@ class EstablecimientoController extends Controller
      * @param  \App\Establecimiento  $establecimiento
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Establecimiento $establecimiento)
+    public function destroy($id)
     {
         //Eliminar establecimiento
-        $establecimiento->delete();
+        $establecimiento = Establecimiento::find($id)->delete();
 
         return response()->json([
             'data'=>$establecimiento,

@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::apiResource('establecimientos', 'EstablecimientoController');
-Route::apiResource('establecimientos.imagen', 'EstablecimientoImagenController', ['only'=>['index', 'show', 'destroy']]);
+Route::apiResource('establecimientos.imagen', 'EstablecimientoImagenController', ['except'=>['update']]);
 Route::apiResource('establecimientos.puntuacion', 'EstablecimientoPuntuacionController', ['only'=>['index']]);
 Route::apiResource('establecimientos.productos', 'EstablecimientoProductoController');
 Route::apiResource('establecimientos.productos.puntuacion', 'EstablecimientoProductoPuntuacionController', ['only'=>['index']]);
