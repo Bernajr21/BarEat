@@ -32,8 +32,10 @@ Route::apiResource('establecimientos.reservas', 'EstablecimientoReservaControlle
 Route::apiResource('usuarios', 'UserController');
 Route::apiResource('usuarios.tipos', 'UserTipoUsuarioController');
 Route::apiResource('usuarios.reservas', 'UserReservaController', ['only'=>['index', 'store']]);
+Route::apiResource('usuarios.puntuación_establecimiento', 'UserPuntuacionEstablecimientoController', ['only'=>['store']]);
+Route::apiResource('usuarios.puntuación_producto', 'UserPuntuacionProductoController', ['only'=>['store']]);
 
-Route::apiResource('reservas', 'ReservaController');
+Route::apiResource('reservas', 'ReservaController'); //Es necesario?
 
 Route::apiResource('puntuaciones_establecimientos', 'PuntuacionEstablecimientoController');
 

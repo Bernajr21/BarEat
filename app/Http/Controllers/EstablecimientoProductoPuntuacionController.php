@@ -18,6 +18,10 @@ class EstablecimientoProductoPuntuacionController extends Controller
          
         //Devolver la puntuación de un producto en concreto que 
         //pertenece a un establecimiento determinado
+
+        //Contemplar cuando un producto no concuerda con un establecimiento
+
+
         $establecimiento = Establecimiento::find($establecimiento_id);
 
         $establecimiento = Establecimiento::find($establecimiento_id);
@@ -26,7 +30,7 @@ class EstablecimientoProductoPuntuacionController extends Controller
                                 ->first()->establecimiento_id;
 
 
-        $producto = $establecimiento->productos_carta()->where('carta_id', $carta)->get();
+        dd($producto = $establecimiento->productos_carta()->where('carta_id', $carta)->get());
 
         $producto = Producto::find($producto_id);
         $producto_puntuaciones = $producto->puntuaciones_producto()->get();
