@@ -9,6 +9,7 @@ class Producto extends Model
     //Campos rellenables
     protected $fillable = [
         'nombre_producto', 'descripcion_producto', 'precio_producto', 'tipo_producto', 
+        'puntuacion_media_producto', 'carta_id'
     ];
 
     //Campos ocultos
@@ -37,6 +38,6 @@ class Producto extends Model
 
     //Obtenemos las imágenes del producto
     public function imagenes(){
-        return $this->hasMany('App\Imagenes');
+        return $this->hasMany('App\Imagen');
     }
 }

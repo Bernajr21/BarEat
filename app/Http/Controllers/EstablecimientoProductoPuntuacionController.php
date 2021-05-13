@@ -13,9 +13,28 @@ class EstablecimientoProductoPuntuacionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Establecimiento $establecimiento, Producto $producto)
+    public function index($establecimiento_id, $producto_id)
     {
-        //
+         
+        //Devolver la puntuación de un producto en concreto que 
+        //pertenece a un establecimiento determinado
+        $establecimiento = Establecimiento::find($establecimiento_id);
+
+        $establecimiento = Establecimiento::find($establecimiento_id);
+        $carta = $establecimiento->carta()
+                                ->where('establecimiento_id', $establecimiento_id)
+                                ->first()->establecimiento_id;
+
+
+        $producto = $establecimiento->productos_carta()->where('carta_id', $carta)->get();
+
+        $producto = Producto::find($producto_id);
+        $producto_puntuaciones = $producto->puntuaciones_producto()->get();
+        
+        return [
+            "Producto" => $producto,
+            "Puntuación" => $producto_puntuaciones
+        ];
     }
 
     /**

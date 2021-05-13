@@ -30,7 +30,7 @@ class CreateEstablecimientosTable extends Migration
             $table->integer('maximo_numero_comensales');
             $table->integer('aforo');
             $table->string('ruta_foto_principal')->nullable();
-            //$table->integer('puntuacion_media_establecimiento');
+            $table->integer('puntuacion_media_establecimiento')->nullable();
             $table->foreignId('user_id')->constrained('users');
             $table->boolean('es_premium')->nullable();
 

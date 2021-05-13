@@ -22,10 +22,10 @@ class CreateImagenesTable extends Migration
             $table->text('descripcion_imagen')->nullable();
             $table->double('ancho')->nullable();
             $table->double('alto')->nullable();
-            $table->foreignId('establecimiento_id')->constrained('establecimientos')->nullable();
-            $table->foreignId('producto_id')->constrained('productos')->nullable();
-            $table->foreignId('anuncio_id')->constrained('anuncios')->nullable();
-            $table->foreignId('user_id')->constrained('users')->nullable();
+            $table->foreignId('establecimiento_id')->nullable()->constrained('establecimientos');
+            $table->foreignId('producto_id')->nullable()->constrained('productos');
+            $table->foreignId('anuncio_id')->nullable()->constrained('anuncios');
+            $table->foreignId('user_id')->nullable()->constrained('users');
             
             $table->timestamps();
         });

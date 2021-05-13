@@ -24,10 +24,10 @@ use Illuminate\Support\Facades\Route;
 Route::apiResource('establecimientos', 'EstablecimientoController');
 Route::apiResource('establecimientos.imagen', 'EstablecimientoImagenController', ['except'=>['update']]);
 Route::apiResource('establecimientos.puntuacion', 'EstablecimientoPuntuacionController', ['only'=>['index']]);
+Route::apiResource('establecimientos.carta', 'EstablecimientoCartaController', ['only'=>['store']]);
 Route::apiResource('establecimientos.productos', 'EstablecimientoProductoController');
 Route::apiResource('establecimientos.productos.puntuacion', 'EstablecimientoProductoPuntuacionController', ['only'=>['index']]);
 Route::apiResource('establecimientos.reservas', 'EstablecimientoReservaController');
-
 
 Route::apiResource('usuarios', 'UserController');
 Route::apiResource('usuarios.tipos', 'UserTipoUsuarioController');
@@ -41,9 +41,7 @@ Route::apiResource('puntuaciones_productos', 'PuntuacionProductoController');
 
 
 
-
-
-//No le hagas caso a esto Berna. Lo he puesto yo para probar
+//Solo de prueba. No necesario para la app
 Route::apiResource('productos', 'ProductoController');
 
 

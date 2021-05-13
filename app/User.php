@@ -68,6 +68,6 @@ class User extends Model
 
     //Obtenemos las imágenes del usuario
     public function imagenes(){
-        return $this->hasMany('App\Imagenes');
+        return $this->hasMany('App\Imagen');
     }
 }

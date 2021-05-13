@@ -85,6 +85,8 @@ class EstablecimientoController extends Controller
         //Eliminar establecimiento
         $establecimiento = Establecimiento::find($id)->delete();
 
+        //Problemas con constraint
+
         return response()->json([
             'data'=>$establecimiento,
             'message'=>'Establecimiento eliminado exitosamente'], 200);

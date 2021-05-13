@@ -8,7 +8,7 @@ class Carta extends Model
 {
     //Campos rellenables
     protected $fillable = [
-        'establecimiento_id', 'producto_id', 
+        'establecimiento_id', 
     ];
 
     //Campos ocultos
@@ -21,11 +21,11 @@ class Carta extends Model
 
     //Obtenemos el establecimiento al que pertenecen las cartas
     public function establecimientos(){
-        return $this->hasOne('App\Establecimientos');
+        return $this->hasOne('App\Establecimiento');
     }
 
     //Obtenemos los productos de la carta
     public function productos(){
-        return $this->hasMany('App\Productos');
+        return $this->hasMany('App\Producto');
     }
 }

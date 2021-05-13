@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Carta;
+use App\Producto;
+use App\Establecimiento;
 use Illuminate\Http\Request;
 
 class EstablecimientoProductoController extends Controller
@@ -11,9 +14,11 @@ class EstablecimientoProductoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Establecimiento $establecimiento)
     {
-        //
+        //Mostrar productos del establecimiento
+        $productos = $establecimiento->productos_carta()->get();
+        return $productos;
     }
 
     /**
@@ -22,9 +27,29 @@ class EstablecimientoProductoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Establecimiento $establecimiento)
     {
-        //
+        //Validar datos
+
+        //Habría que comprobar que un mismo establecimiento no pueda insertar dos productos iguales?
+
+        $establecimiento_id = $establecimiento->id;
+        $carta_id = $establecimiento->carta()->where('establecimiento_id', $establecimiento_id)->first();
+
+        //Almacenar productos del establecimiento
+        $producto = Producto::create([
+            'nombre_producto' => $request['nombre_producto'],
+            'descripcion_producto' => $request['descripcion_producto'],
+            'precio_producto' => $request['precio_producto'],
+            'tipo_producto' => $request['tipo_producto'],
+            'carta_id' => $carta_id->id,
+            'ruta_foto_principal' => $request['ruta_foto_principal'],
+        ]);
+
+        return response()->json([
+            'data'=>$producto,
+            'message'=>'Registro realizado correctamente'], 200);
+    
     }
 
     /**
@@ -33,9 +58,13 @@ class EstablecimientoProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($establecimiento_id, $producto_id)
     {
-        //
+        //Comprobar que existe el producto que estamos buscando para el establecimiento indicado
+
+        //Mostrar un producto concreto de un establecimiento determinado
+        $producto = Establecimiento::find($establecimiento_id)->productos_carta()->find($producto_id);
+        return $producto;
     }
 
     /**
@@ -45,9 +74,25 @@ class EstablecimientoProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $establecimiento_id, $producto_id)
     {
-        //
+        //Validar datos
+        
+        //Comprobar que el producto que queremos actualizar existe en la carta/establecimiento seleccionada
+        
+        //Obtenemos datos del establecimiento
+        $establecimiento = Establecimiento::find($establecimiento_id);
+        //Obtenemos la carta para utilizar posteriormente su id
+        $carta = $establecimiento->carta()->where('establecimiento_id', $establecimiento_id)->first();
+
+        //Actualizar un producto en concreto de un establecimiento determinado
+        //Haciendo uso de la id del producto y la id de la carta
+        $producto = Producto::where('id', $producto_id)->where('carta_id', $carta->id)->first();
+        $producto->update($request->all());
+
+        return response()->json([
+            'data'=>$producto,
+            'message'=>'Registro realizado correctamente'], 200);
     }
 
     /**
@@ -56,8 +101,17 @@ class EstablecimientoProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($establecimiento_id, $producto_id)
     {
-        //
+        //Comprobar si existe el producto que buscamos
+
+        //Problemas con constraint
+
+        //Eliminar producto
+        $producto = Establecimiento::find($establecimiento_id)->productos_carta()->find($producto_id)->delete();
+
+        return response()->json([
+            'data'=>$producto,
+            'message'=>'productro eliminado exitosamente'], 200);
     }
 }

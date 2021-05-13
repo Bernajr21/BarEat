@@ -79,8 +79,9 @@ class EstablecimientoImagenController extends Controller
      */
     public function destroy($establecimiento_id, $imagen_id)
     {
+        //Comprobar si existe la imagen que buscamos
+        
         //Eliminar imagen
-    
         $imagen = Establecimiento::find($establecimiento_id)->imagenes()->find($imagen_id)->delete();
 
         return response()->json([

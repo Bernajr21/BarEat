@@ -2,21 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Establecimiento;
+use App\Carta;
 use Illuminate\Http\Request;
 
-class EstablecimientoPuntuacionController extends Controller
+class EstablecimientoCartaController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Establecimiento $establecimiento)
+    public function index()
     {
-        //Mostrar las puntuaciones de un establecimiento determinado
-        $puntuaciones = $establecimiento->puntuaciones_establecimiento()->get();
-        return $puntuaciones;
+        //
     }
 
     /**
@@ -25,9 +23,24 @@ class EstablecimientoPuntuacionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        //1- Consultar a Rául --> ¿Creo la carta al tiempo que el establecimiento?
+        //2- Cómo limitamos para que solo se pueda crear una carta por establecimiento
+        /*if($id == $carta->establecimiento_id){
+             return response()->json([
+            'message'=>'ERROR. Ya existe una carta creada'], XXX?);
+        }else{
+
+        }*/
+
+        //Insertamos la carta del establecimiento
+        $carta = Carta::create([
+            'establecimiento_id' => $id,
+        ]);
+        return response()->json([
+            'data'=>$carta,
+            'message'=>'Registro realizado correctamente'], 200);
     }
 
     /**

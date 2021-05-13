@@ -19,7 +19,6 @@ class CreateCartasTable extends Migration
             $table->id();
             
             $table->foreignId('establecimiento_id')->constrained('establecimientos');
-            $table->foreignId('producto_id')->constrained('productos');
 
             $table->timestamps();
         });

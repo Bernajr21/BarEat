@@ -32,6 +32,12 @@ class Establecimiento extends Model
         return $this->hasMany('App\Reserva');
     }
 
+    //Obtenemos la carta del establecimiento
+    public function carta()
+    {
+        return $this->hasOne('App\Carta');
+    }
+
     //Obtenemos los productos que se ofrecen en el establecimiento
     public function productos_carta(){
         return $this->hasManyThrough('App\Producto', 'App\Carta');

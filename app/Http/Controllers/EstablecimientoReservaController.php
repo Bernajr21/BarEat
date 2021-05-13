@@ -24,7 +24,7 @@ class EstablecimientoReservaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Comprobar que no se crean dos reservas para el mismo día y a la misma hora
     }
 
     /**
