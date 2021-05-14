@@ -20,31 +20,37 @@ use Illuminate\Support\Facades\Route;
 //Route::post('login', 'UserController@login');
 
 
+//ESTABLECIMIENTOS
+Route::apiResource('establecimientos', 'EstablecimientoController', ['only'=>['index']]);
+Route::apiResource('establecimiento.imagenes', 'EstablecimientoImagenController', ['except'=>['update']]);
+Route::apiResource('establecimiento.puntuaciones', 'EstablecimientoPuntuacionController', ['only'=>['index']]);
+Route::apiResource('establecimiento.productos', 'EstablecimientoProductoController');
+Route::apiResource('establecimiento.reservas', 'EstablecimientoReservaController', ['only'=>['index']]);
+Route::apiResource('establecimiento.carta', 'EstablecimientoCartaController', ['only'=>['store']]);//duda! se crea automáticamente???
+//Puedo omitirlo --> EstablecimientoProductoPuntuacionController????
+//Route::apiResource('establecimientos.productos.puntuacion', 'EstablecimientoProductoPuntuacionController', ['only'=>['index']]);
 
-Route::apiResource('establecimientos', 'EstablecimientoController');
-Route::apiResource('establecimientos.imagen', 'EstablecimientoImagenController', ['except'=>['update']]);
-Route::apiResource('establecimientos.puntuacion', 'EstablecimientoPuntuacionController', ['only'=>['index']]);
-Route::apiResource('establecimientos.carta', 'EstablecimientoCartaController', ['only'=>['store']]);
-Route::apiResource('establecimientos.productos', 'EstablecimientoProductoController');
-Route::apiResource('establecimientos.productos.puntuacion', 'EstablecimientoProductoPuntuacionController', ['only'=>['index']]);
-Route::apiResource('establecimientos.reservas', 'EstablecimientoReservaController');
 
+//USUARIOS
+//Controlador usuario.establecimiento???? UsuarioEstablecimientoController????
 Route::apiResource('usuarios', 'UserController');
 Route::apiResource('usuarios.tipos', 'UserTipoUsuarioController');
 Route::apiResource('usuarios.reservas', 'UserReservaController', ['only'=>['index', 'store']]);
-Route::apiResource('usuarios.puntuación_establecimiento', 'UserPuntuacionEstablecimientoController', ['only'=>['store']]);
-Route::apiResource('usuarios.puntuación_producto', 'UserPuntuacionProductoController', ['only'=>['store']]);
+Route::apiResource('usuarios.reservas', 'UserReservaController', ['only'=>['index', 'store']]);
+//Route::apiResource('usuario.establecimiento', 'UserEstablecimientoController', ['only'=>['store']]);
+//Route::apiResource('usuarios.puntuación_establecimiento', 'UserPuntuacionEstablecimientoController', ['only'=>['store']]);
+//Route::apiResource('usuarios.puntuación_producto', 'UserPuntuacionProductoController', ['only'=>['store']]);
 
-Route::apiResource('reservas', 'ReservaController'); //Es necesario?
+Route::apiResource('reservas', 'ReservaController'); //Es necesario? Se visualizarían directamente con establecimientos.reservas
 
-Route::apiResource('puntuaciones_establecimientos', 'PuntuacionEstablecimientoController');
+Route::apiResource('puntuaciones_establecimientos', 'PuntuacionEstablecimientoController');//Es necesario???
 
-Route::apiResource('puntuaciones_productos', 'PuntuacionProductoController');
+Route::apiResource('puntuaciones_productos', 'PuntuacionProductoController'); //Es necesario???
 
-
+//controlador ProductosPuntuaciónController
 
 //Solo de prueba. No necesario para la app
-Route::apiResource('productos', 'ProductoController');
+Route::apiResource('productos', 'ProductoController'); //Solo la puntuación teniendo en cuenta el establecimiento
 
 
 

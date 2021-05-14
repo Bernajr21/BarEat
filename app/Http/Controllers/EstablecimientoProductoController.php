@@ -43,7 +43,7 @@ class EstablecimientoProductoController extends Controller
             'precio_producto' => $request['precio_producto'],
             'tipo_producto' => $request['tipo_producto'],
             'carta_id' => $carta_id->id,
-            'ruta_foto_principal' => $request['ruta_foto_principal'],
+            //'ruta_foto_principal' => $request['ruta_foto_principal'],
         ]);
 
         return response()->json([

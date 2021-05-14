@@ -29,9 +29,16 @@ class EstablecimientoController extends Controller
     public function store(Request $request)
     {
         //Validación
-        /*$validatedData = $request->validate([
-            '' => 'required|max:255',
-            '' => 'required',
+        /*$validacion = $request->validate([ //La validación me está jodiendo el resto
+            'nombre_establecimiento' => 'required',
+            'descripcion_establecimiento' => 'required',
+            'direccion_establecimiento' => 'required',
+            'num_telefono' => 'required|unique:establecimientos|integer',
+            'email' => 'required|max:255|unique:establecimientos',
+            //'latitud' => '',
+            //'longitud' => '',
+            'tipo_establecimiento' => 'required',
+            'nif' => 'required',
         ]);*/
 
         //Almacenar establecimiento
