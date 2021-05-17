@@ -36,9 +36,6 @@ class EstablecimientoImagenController extends Controller
             'ancho' => $request['ancho'],
             'alto' => $request['alto'],
             'establecimiento_id' => $establecimiento->id,
-            'producto_id' => $request['producto_id'],
-            'anuncio_id' => $request['anuncio_id'],
-            'user_id' => $request['user_id'],
         ]);
 
         return response()->json([
@@ -57,18 +54,6 @@ class EstablecimientoImagenController extends Controller
         //Mostrar una imagen concreta de un establecimiento determinado (teniendo en cuenta sus id)
         $imagen = Establecimiento::find($establecimiento_id)->imagenes()->find($imagen_id);
         return $imagen;
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
     }
 
     /**

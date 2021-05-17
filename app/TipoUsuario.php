@@ -21,6 +21,6 @@ class TipoUsuario extends Model
     //Relacionamos un tipo de usuario con un usuario en concreto
     public function usuarios_tipo()
     {
-        return $this->belongsToMany('App\User', 'usuario_tipos');
+        return $this->belongsToMany('App\User', 'usuario_tipos', 'tipo_usuario_id', 'user_id');
     }
 }

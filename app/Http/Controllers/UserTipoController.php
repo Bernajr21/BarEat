@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use App\TipoUsuario;
+use App\UsuarioTipo;
 use Illuminate\Http\Request;
 
 class UserTipoController extends Controller
@@ -11,9 +14,12 @@ class UserTipoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
+        $user = User::find($id);
+        $user_tipo = $user->usuarios_tipo()->get();
+
+        return $user_tipo;
     }
 
     /**

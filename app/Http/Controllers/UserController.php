@@ -27,8 +27,15 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        //Validar usuario
+
+        dd($request);
+        
         //Crear usuario
         $usuario = User::create($request->all());
+
+        $usuario->usuarios_tipo()->attach($usuario->id); //Esto se hace así????
+
         return response()->json([
             'data'=>$usuario,
             'message'=>'Registro realizado correctamente'], 200);
@@ -40,9 +47,13 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(User $user, $id)
     {
-        //
+
+        //Comprobar si el usuarip existe, si no existe, mandar un mensaje de error
+
+        $usuario = $user->find($id);
+        return $usuario;
     }
 
     /**
@@ -52,9 +63,18 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
-        //
+
+         //validar información
+
+        $user = new User;
+        $usuario = $user->find($id);
+        $usuario->update($request->all());
+
+        return response()->json([
+            'data' => $usuario,
+            'message' => 'Actualización realización correctamente'], 200);
     }
 
     /**
@@ -63,8 +83,12 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        //
+        $user = User::find($id)->delete();
+
+        return response()->json([
+            'data' => $user,
+            'message' => 'Usuario eliminado correctamente'], 200);
     }
 }
