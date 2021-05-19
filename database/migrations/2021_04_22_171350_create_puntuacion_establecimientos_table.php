@@ -17,8 +17,8 @@ class CreatePuntuacionEstablecimientosTable extends Migration
         
         Schema::create('puntuacion_establecimientos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('establecimiento_id')->constrained('establecimientos');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('establecimiento_id')->constrained('establecimientos')->onDelete('cascade');
             $table->double('puntuacion_establecimiento');
             $table->text('comentario');
             $table->timestamps();

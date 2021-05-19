@@ -41,7 +41,6 @@ class EstablecimientoProductoController extends Controller
     public function store(FormValidation $request, Establecimiento $establecimiento)
     {
         
-
         /*$validated = $request->valdated();
         if ($validated->fails()){
             return response()->json([
@@ -96,7 +95,6 @@ class EstablecimientoProductoController extends Controller
     {
         //Validar datos
         
-        //Comprobar que el producto que queremos actualizar existe en la carta/establecimiento seleccionada
         
         //Obtenemos datos del establecimiento
         $establecimiento = Establecimiento::find($establecimiento_id);
@@ -110,7 +108,7 @@ class EstablecimientoProductoController extends Controller
 
         return response()->json([
             'data'=>$producto,
-            'message'=>'Registro realizado correctamente'], 200);
+            'message'=>'Registro realizado correctamente'], 201);
     }
 
     /**

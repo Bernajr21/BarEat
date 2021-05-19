@@ -30,7 +30,7 @@ class UserTipoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //No se crean tipos. Los tipos son dos predeterminados: cliente y propietario
     }
 
     /**

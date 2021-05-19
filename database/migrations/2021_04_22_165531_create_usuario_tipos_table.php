@@ -17,8 +17,10 @@ class CreateUsuarioTiposTable extends Migration
         
         Schema::create('usuario_tipos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('tipo_usuario_id')->constrained('tipo_usuarios');;
-            $table->foreignId('user_id')->constrained('users');;
+
+            $table->foreignId('tipo_usuario_id')->constrained('tipo_usuarios')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            
             $table->timestamps();
         });
     }

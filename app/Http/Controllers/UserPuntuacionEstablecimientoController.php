@@ -26,7 +26,7 @@ class UserPuntuacionEstablecimientoController extends Controller
 
         return response()->json([
             'data'=>$puntuacionEstablecimiento,
-            'message'=>'Registro realizado correctamente'], 200);
+            'message'=>'Registro realizado correctamente'], 201);
     }
 
 }

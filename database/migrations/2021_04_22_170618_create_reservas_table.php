@@ -17,11 +17,13 @@ class CreateReservasTable extends Migration
         
         Schema::create('reservas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('establecimiento_id')->constrained('establecimientos');
+
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('establecimiento_id')->constrained('establecimientos')->onDelete('cascade');
             $table->integer('num_comensales');
             $table->date('fecha');
             $table->time('hora');
+
             $table->timestamps();
         });
     }

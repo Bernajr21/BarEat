@@ -16,6 +16,7 @@ class EstablecimientoCartaController extends Controller
     public function store(Request $request, $id)
     {
         //1- Consultar a Rául --> ¿Creo la carta al tiempo que el establecimiento?
+        
         //2- Cómo limitamos para que solo se pueda crear una carta por establecimiento
         /*if($id == $carta->establecimiento_id){
              return response()->json([
@@ -30,7 +31,7 @@ class EstablecimientoCartaController extends Controller
         ]);
         return response()->json([
             'data'=>$carta,
-            'message'=>'Registro realizado correctamente'], 200);
+            'message'=>'Registro realizado correctamente'], 201);
     }
 
 }

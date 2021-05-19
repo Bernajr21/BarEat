@@ -31,7 +31,7 @@ class CreateEstablecimientosTable extends Migration
             $table->integer('aforo');
             $table->string('ruta_foto_principal')->nullable();
             $table->integer('puntuacion_media_establecimiento')->nullable();
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->boolean('es_premium')->nullable();
 
             $table->timestamps();

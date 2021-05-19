@@ -14,12 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});*/
-//Route::post('login', 'UserController@login');
-
-
 //ESTABLECIMIENTOS
 Route::apiResource('establecimientos', 'EstablecimientoController', ['only'=>['index', 'show']]);
 Route::apiResource('establecimiento.imagenes', 'EstablecimientoImagenController', ['except'=>['update']]);
@@ -28,12 +22,12 @@ Route::apiResource('establecimiento.productos', 'EstablecimientoProductoControll
 Route::apiResource('establecimiento.reservas', 'EstablecimientoReservaController', ['only'=>['index']]);
 Route::apiResource('establecimiento.carta', 'EstablecimientoCartaController', ['only'=>['store']]);
 
-//establecimientoproductopuntuacionController???
 
 //USUARIOS
-Route::apiResource('usuarios', 'UserController');
-Route::apiResource('usuarios.tipos', 'UserTipoController');
-Route::apiResource('usuario.establecimiento.reserva', 'UserEstablecimientoReservaController', ['only'=>['store']]);
+Route::apiResource('usuarios', 'UserController', ['except'=>['index']]);
+Route::post('login', 'UserController@login');
+Route::apiResource('usuarios.tipos', 'UserTipoController', ['except'=>['index']]);
+Route::apiResource('usuario.establecimiento.reserva', 'UserEstablecimientoReservaController', ['only'=>['store', 'show', 'delete']]);
 Route::apiResource('usuario.establecimiento', 'UserEstablecimientoController', ['only'=>['store']]);
 Route::apiResource('usuario.establecimiento.puntuacion', 'UserPuntuacionEstablecimientoController', ['only'=>['store']]);
 Route::apiResource('usuario.producto.puntuacion', 'UserPuntuacionProductoController', ['only'=>['store']]);
@@ -42,10 +36,8 @@ Route::apiResource('usuario.producto.puntuacion', 'UserPuntuacionProductoControl
 Route::apiResource('producto.puntuaciones', 'ProductoPuntuacionController', ['only'=>['index']]);
 
 
-
-
 //Solo de prueba. No necesario para la app
-Route::apiResource('productos', 'ProductoController'); //Solo la puntuación teniendo en cuenta el establecimiento
+//Route::apiResource('productos', 'ProductoController'); //Solo la puntuación teniendo en cuenta el establecimiento
 
 
 

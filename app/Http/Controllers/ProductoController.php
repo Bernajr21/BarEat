@@ -31,7 +31,7 @@ class ProductoController extends Controller
         $producto = Producto::create($request->all());
         return response()->json([
             'data'=>$producto,
-            'message'=>'Registro realizado correctamente'], 200);
+            'message'=>'Registro realizado correctamente'], 201);
     }
 
     /**

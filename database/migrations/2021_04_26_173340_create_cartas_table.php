@@ -18,7 +18,9 @@ class CreateCartasTable extends Migration
         Schema::create('cartas', function (Blueprint $table) {
             $table->id();
             
-            $table->foreignId('establecimiento_id')->constrained('establecimientos');
+            $table->foreignId('establecimiento_id')
+                    ->constrained('establecimientos')
+                    ->onDelete('cascade');
 
             $table->timestamps();
         });

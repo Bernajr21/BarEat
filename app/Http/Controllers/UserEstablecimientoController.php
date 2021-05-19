@@ -32,7 +32,7 @@ class UserEstablecimientoController extends Controller
 
         return response()->json([
             'data'=>$establecimiento,
-            'message'=>'Registro realizado correctamente'], 200);
+            'message'=>'Registro realizado correctamente'], 201);
     }
 
 }

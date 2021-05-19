@@ -20,7 +20,7 @@ class CreateAnunciosTable extends Migration
             
             $table->string('titulo_anuncio');
             $table->text('descripcion_anuncio');
-            $table->foreignId('establecimiento_id')->constrained('establecimientos');
+            $table->foreignId('establecimiento_id')->constrained('establecimientos')->onDelete('cascade');;
 
             $table->timestamps();
         });

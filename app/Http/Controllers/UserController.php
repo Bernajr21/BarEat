@@ -3,10 +3,38 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Helpers\Token;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\FormValidation;
 
 class UserController extends Controller
 {
+    //AUTENTICACIÓN
+    public function __construct()
+	{
+		$this->middleware('auth')->except('store','login');
+	}
+
+    public function login(Request $request)
+    {
+        $user = User::by_field('email', $request->email);
+
+		if (isset($user) && Hash::check($request->password, $user->password))
+        {
+            $token = new Token(['email' => $user->email]);
+            $token = $token->encode();
+
+            return response()->json([
+                "token" => $token
+            ], 200);
+        }
+
+        return response()->json([
+            "message" => "Acceso no autorizado"
+        ], 401);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -25,20 +53,30 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FormValidation $request)
     {
         //Validar usuario
 
-        dd($request);
-        
-        //Crear usuario
-        $usuario = User::create($request->all());
+        bcrypt($request['password']); //Funciona así?? Primero tendría que validarla
 
+        //Token jwt
+        $data_token = [
+            "email" => $validatedData['email'],
+        ];
+        $token = new Token($data_token);
+        $token = $token->encode();
+
+
+
+        //Crear usuario
+        $usuario = User::create($request->validated());
+
+        //Insertamos ids en tabla pivote
         $usuario->usuarios_tipo()->attach($usuario->id); //Esto se hace así????
 
         return response()->json([
             'data'=>$usuario,
-            'message'=>'Registro realizado correctamente'], 200);
+            'message'=>'Registro realizado correctamente'], 201);
     }
 
     /**
@@ -47,13 +85,10 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user, $id)
-    {
-
-        //Comprobar si el usuarip existe, si no existe, mandar un mensaje de error
-
-        $usuario = $user->find($id);
-        return $usuario;
+    public function show($user_id)
+    {        
+        $user = new User;
+        return $user::find($user_id);
     }
 
     /**
@@ -66,7 +101,7 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
 
-         //validar información
+        //validar información
 
         $user = new User;
         $usuario = $user->find($id);

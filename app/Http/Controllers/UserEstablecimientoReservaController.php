@@ -18,8 +18,8 @@ class UserEstablecimientoReservaController extends Controller
     public function store(Request $request, $user_id, $establecimiento_id)
     {
         
-        //Comprobar que no se crean dos reservas para el mismo día y a la misma hora
-
+        //Comprobar que no se pueden hacer más reselvas que comensales --> mensaje "No hay mesas disponibles"
+        //Comprobar si existe la reserva antes de  hacerla
         
         //Almacenar imagen del establecimiento
         $reserva = Reserva::create([
@@ -32,7 +32,9 @@ class UserEstablecimientoReservaController extends Controller
 
         return response()->json([
             'data'=>$reserva,
-            'message'=>'Registro realizado correctamente'], 200);
+            'message'=>'Registro realizado correctamente'], 201);
     }
+
+    //Crear controlador para que el user pueda ver sus reservas
 
 }

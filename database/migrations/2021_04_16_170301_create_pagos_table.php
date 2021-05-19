@@ -18,7 +18,7 @@ class CreatePagosTable extends Migration
         Schema::create('pagos', function (Blueprint $table) {
             $table->id();
             
-            $table->foreignId('establecimiento_id')->constrained('establecimientos');
+            $table->foreignId('establecimiento_id')->constrained('establecimientos')->onDelete('cascade');;
             $table->double('importe');
             $table->string('estado');
 
