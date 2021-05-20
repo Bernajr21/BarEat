@@ -15,16 +15,6 @@ class EstablecimientoCartaController extends Controller
      */
     public function store(Request $request, $id)
     {
-        //1- Consultar a Rául --> ¿Creo la carta al tiempo que el establecimiento?
-        
-        //2- Cómo limitamos para que solo se pueda crear una carta por establecimiento
-        /*if($id == $carta->establecimiento_id){
-             return response()->json([
-            'message'=>'ERROR. Ya existe una carta creada'], XXX?);
-        }else{
-
-        }*/
-
         //Insertamos la carta del establecimiento
         $carta = Carta::create([
             'establecimiento_id' => $id,

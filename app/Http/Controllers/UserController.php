@@ -59,15 +59,14 @@ class UserController extends Controller
     {
         //Validar usuario
         
-
-        /*bcrypt($request['password']); //Funciona así?? Primero tendría que validarla
+        bcrypt($request['password']); //Funciona así?? Primero tendría que validarla
 
         //Token jwt
         $data_token = [
             "email" => $request['email'],
         ];
         $token = new Token($data_token);
-        $token = $token->encode();*/
+        $token = $token->encode();
 
         //dd($request->validated());
 
@@ -77,7 +76,6 @@ class UserController extends Controller
         //Insertamos ids en tabla pivote
 
         $t = TipoUsuario::where('tipo', 'propietario')->pluck('id')->first();
-        //$u = User::whereHas('usuarios_tipo', function ($query) {$query->where('tipo_usuario_id', 2);})->get();
         $usuario->usuarios_tipo()->attach($t); 
 
         return response()->json([

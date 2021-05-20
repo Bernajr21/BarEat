@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Establecimiento extends Model
 {
+    const TIPO_ESTABL_1 = 'Bar';
+    const TIPO_ESTABL_2 = 'Cafetería';
+    const TIPO_ESTABL_3 = 'Restaurante';
+    
     //Campos rellenables
     protected $fillable = [
         'nombre_establecimiento', 'descripcion_establecimiento', 'dirección_establecimiento', 'num_telefono', 'email',

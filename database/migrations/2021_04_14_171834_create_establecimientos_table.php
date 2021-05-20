@@ -21,7 +21,7 @@ class CreateEstablecimientosTable extends Migration
             $table->string('nombre_establecimiento', 100);
             $table->text('descripcion_establecimiento');
             $table->string('dirección_establecimiento');
-            $table->string('num_telefono')->unique();
+            $table->string('num_telefono')->nullable();
             $table->string('email')->unique();
             $table->double('latitud', 8, 2)->nullable();
             $table->double('longitud', 8, 2)->nullable();

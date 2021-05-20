@@ -6,7 +6,6 @@ use App\Carta;
 use App\Producto;
 use App\Establecimiento;
 use Illuminate\Http\Request;
-use App\Http\Requests\FormValidation;
 
 class EstablecimientoProductoController extends Controller
 {
@@ -38,16 +37,9 @@ class EstablecimientoProductoController extends Controller
             ->withInput($this->except($this->dontFlash))
             ->withErrors($errors, $this->errorBag);
     }
-    public function store(FormValidation $request, Establecimiento $establecimiento)
+    public function store(Request $request, Establecimiento $establecimiento)
     {
         
-        /*$validated = $request->valdated();
-        if ($validated->fails()){
-            return response()->json([
-                'message' => $request->messages(),
-            ]);
-        }*/
-
         //Habría que comprobar que un mismo establecimiento no pueda insertar dos productos iguales?
 
         $establecimiento_id = $establecimiento->id;
@@ -91,10 +83,9 @@ class EstablecimientoProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(FormValidation $request, $establecimiento_id, $producto_id)
+    public function update(Request $request, $establecimiento_id, $producto_id)
     {
         //Validar datos
-        
         
         //Obtenemos datos del establecimiento
         $establecimiento = Establecimiento::find($establecimiento_id);
