@@ -11,13 +11,15 @@ class User extends Model
 {
     use Notifiable;
 
+    public $resource = UserResource::class;
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'apellidos', 'email', 'num_telefono', 'fecha_nacimiento', 'password',
+        'nombre', 'apellidos', 'email', 'num_telefono', 'fecha_nacimiento', 'password',
     ];
 
     /**
@@ -69,7 +71,7 @@ class User extends Model
     //Relacionamos al usuario con su tipo de usuario
     public function usuarios_tipo()
     {
-        return $this->belongsToMany('App\UsuarioTipo', 'usuario_tipos', 'tipo_usuario_id', 'user_id');
+        return $this->belongsToMany('App\TipoUsuario', 'usuario_tipos', 'user_id', 'tipo_usuario_id');
     }
 
     //Relacionamos la tabla usuarios con la tabla establecimientos

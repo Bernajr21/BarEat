@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\TipoUsuario;
 use App\Helpers\Token;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreUser;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Requests\FormValidation;
+use App\Http\Resources\UserResource;
 
 class UserController extends Controller
 {
@@ -53,26 +55,30 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(FormValidation $request)
+    public function store(StoreUser $request)
     {
         //Validar usuario
+        
 
-        bcrypt($request['password']); //Funciona así?? Primero tendría que validarla
+        /*bcrypt($request['password']); //Funciona así?? Primero tendría que validarla
 
         //Token jwt
         $data_token = [
-            "email" => $validatedData['email'],
+            "email" => $request['email'],
         ];
         $token = new Token($data_token);
-        $token = $token->encode();
+        $token = $token->encode();*/
 
-
+        //dd($request->validated());
 
         //Crear usuario
         $usuario = User::create($request->validated());
 
         //Insertamos ids en tabla pivote
-        $usuario->usuarios_tipo()->attach($usuario->id); //Esto se hace así????
+
+        $t = TipoUsuario::where('tipo', 'propietario')->pluck('id')->first();
+        //$u = User::whereHas('usuarios_tipo', function ($query) {$query->where('tipo_usuario_id', 2);})->get();
+        $usuario->usuarios_tipo()->attach($t); 
 
         return response()->json([
             'data'=>$usuario,
@@ -88,7 +94,13 @@ class UserController extends Controller
     public function show($user_id)
     {        
         $user = new User;
-        return $user::find($user_id);
+        //return $user::find($user_id);
+        $u = $user::find($user_id);
+
+        //return new $u->resource($u);
+
+        return new UserResource($u);
+
     }
 
     /**

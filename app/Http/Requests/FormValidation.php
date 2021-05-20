@@ -23,13 +23,14 @@ class FormValidation extends FormRequest
      */
     public function rules()
     {
+        dd(request()->all());
         return [
 
             //Establecimiento
             'nombre_establecimiento' => 'required',
             'descripcion_establecimiento' => 'required',
             'direccion_establecimiento' => 'required',
-            'num_telefono' => 'required|unique:establecimientos|integer', //RegExp para formato telf (móvil o fijo?)
+            /*'num_telefono' => 'required|unique:establecimientos|integer', //RegExp para formato telf (móvil o fijo?)
             'email' => 'required|unique:establecimientos|email',
             'tipo_establecimiento' => 'required',
             //'nif' => 'required', //RegExp para formato NIF
@@ -42,14 +43,10 @@ class FormValidation extends FormRequest
             
 
             //Usuario
-            /*''=> '',
-            ''=> '',
-            ''=> '',
-            ''=> '',
-            ''=> '',
-            ''=> '',
-            ''=> '',
-            ''=> '',*/
+            'name'=> 'required',
+            'apellidos'=> 'required',
+            'password'=> 'required',*/
+    
         ];
     }
 
