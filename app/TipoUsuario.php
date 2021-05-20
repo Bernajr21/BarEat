@@ -6,6 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class TipoUsuario extends Model
 {
+
+    const CLIENTE = 'cliente';
+    const PROPIETARIO = 'propietario';
+    
+    protected $table = 'tipo_usuarios'; 
+
     //Campos rellenables
     protected $fillable = [
         'tipo',

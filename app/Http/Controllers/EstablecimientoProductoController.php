@@ -24,7 +24,40 @@ class EstablecimientoProductoController extends Controller
      */
     public function store(Request $request)
     {
+<<<<<<< Updated upstream
         //
+=======
+        if ($this->expectsJson()) {
+            return new JsonResponse($errors, 422);
+        }
+
+        return $this->redirector->to($this->getRedirectUrl())
+            ->withInput($this->except($this->dontFlash))
+            ->withErrors($errors, $this->errorBag);
+    }
+    public function store(Request $request, Establecimiento $establecimiento)
+    {
+
+        //Habría que comprobar que un mismo establecimiento no pueda insertar dos productos iguales?
+
+        $establecimiento_id = $establecimiento->id;
+        $carta_id = $establecimiento->carta()->where('establecimiento_id', $establecimiento_id)->first();
+
+        //Almacenar productos del establecimiento
+        $producto = Producto::create([
+            'nombre_producto' => $request['nombre_producto'],
+            'descripcion_producto' => $request['descripcion_producto'],
+            'precio_producto' => $request['precio_producto'],
+            'tipo_producto' => $request['tipo_producto'],
+            'carta_id' => $carta_id->id,
+            //'ruta_foto_principal' => $request['ruta_foto_principal'],
+        ]);
+
+        return response()->json([
+            'data'=>$producto,
+            'message'=>'Registro realizado correctamente'], 200);
+    
+>>>>>>> Stashed changes
     }
 
     /**

@@ -6,6 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Producto extends Model
 {
+
+    const TIPO_1 = 'Bebida';
+    const TIPO_2 = 'Tapa';
+    const TIPO_3 = 'Ración';
+    const TIPO_4 = 'Plato';
+    const TIPO_5 = 'Postre';
+
+
     //Campos rellenables
     protected $fillable = [
         'nombre_producto', 'descripcion_producto', 'precio_producto', 'tipo_producto', 
