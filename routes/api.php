@@ -20,8 +20,7 @@ Route::apiResource('establecimiento.imagenes', 'EstablecimientoImagenController'
 Route::apiResource('establecimiento.puntuaciones', 'EstablecimientoPuntuacionController', ['only'=>['index']]);
 Route::apiResource('establecimiento.productos', 'EstablecimientoProductoController');
 Route::apiResource('establecimiento.reservas', 'EstablecimientoReservaController', ['only'=>['index']]);
-Route::apiResource('establecimiento.carta', 'EstablecimientoCartaController', ['only'=>['store']]);
-
+Route::apiResource('establecimiento.carta', 'EstablecimientoCartaController', ['only'=>['store', 'show']]);
 
 //USUARIOS
 Route::apiResource('usuarios', 'UserController', ['except'=>['index']]);

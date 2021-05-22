@@ -24,4 +24,18 @@ class EstablecimientoCartaController extends Controller
             'message'=>'Registro realizado correctamente'], 201);
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($establecimiento_id, $carta_id)
+    {
+        $carta = Carta::where('establecimiento_id', $establecimiento_id)->get();
+        //Mostrar una carta concreta de un establecimiento determinado (teniendo en cuenta sus ids)
+        $c = $carta->find($carta_id)->productos()->get();
+        return $c;
+    }
+
 }
