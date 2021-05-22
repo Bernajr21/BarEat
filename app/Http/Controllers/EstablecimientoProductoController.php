@@ -6,6 +6,8 @@ use App\Carta;
 use App\Producto;
 use App\Establecimiento;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreProducto;
+use App\Http\Requests\UpdateProducto;
 
 class EstablecimientoProductoController extends Controller
 {
@@ -37,7 +39,7 @@ class EstablecimientoProductoController extends Controller
             ->withInput($this->except($this->dontFlash))
             ->withErrors($errors, $this->errorBag);
     }
-    public function store(Request $request, Establecimiento $establecimiento)
+    public function store(StoreProducto $request, Establecimiento $establecimiento)
     {
         
         //Habría que comprobar que un mismo establecimiento no pueda insertar dos productos iguales?
@@ -45,6 +47,7 @@ class EstablecimientoProductoController extends Controller
         $establecimiento_id = $establecimiento->id;
         $carta_id = $establecimiento->carta()->where('establecimiento_id', $establecimiento_id)->first();
 
+        $request->validated();
         //Almacenar productos del establecimiento
         $producto = Producto::create([
             'nombre_producto' => $request['nombre_producto'],
@@ -83,7 +86,7 @@ class EstablecimientoProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $establecimiento_id, $producto_id)
+    public function update(UpdateProducto $request, $establecimiento_id, $producto_id)
     {
         //Validar datos
         
@@ -95,7 +98,7 @@ class EstablecimientoProductoController extends Controller
         //Actualizar un producto en concreto de un establecimiento determinado
         //Haciendo uso de la id del producto y la id de la carta
         $producto = Producto::where('id', $producto_id)->where('carta_id', $carta->id)->first();
-        $producto->update($request->all());
+        $producto->update($request->validated());
 
         return response()->json([
             'data'=>$producto,

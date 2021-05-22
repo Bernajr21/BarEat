@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Establecimiento;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreEstablecimiento;
+use App\Http\Requests\UpdateEstablecimiento;
 
 class UserEstablecimientoController extends Controller
 {
@@ -13,9 +15,9 @@ class UserEstablecimientoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $usuario_id)
+    public function store(StoreEstablecimiento $request, $usuario_id)
     {
-       
+       $request->validated();
         //Almacenar imagen del establecimiento
         $establecimiento = Establecimiento::create([
             "user_id" => $usuario_id,
@@ -33,6 +35,25 @@ class UserEstablecimientoController extends Controller
         return response()->json([
             'data'=>$establecimiento,
             'message'=>'Registro realizado correctamente'], 201);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function update(UpdateEstablecimiento $request, $usuario_id, $establecimiento_id)
+    {
+
+        $establecimiento = Establecimiento::find($establecimiento_id);
+        $e = $establecimiento->where('usuario_id', $usuario_id);;
+        $e->update($request->validated());
+
+        return response()->json([
+            'data' => $e,
+            'message' => 'Actualización realización correctamente'], 200);
     }
 
 }

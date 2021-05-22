@@ -7,8 +7,9 @@ use App\TipoUsuario;
 use App\Helpers\Token;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreUser;
-use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\UpdateUser;
 use App\Http\Resources\UserResource;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -74,7 +75,6 @@ class UserController extends Controller
         $usuario = User::create($request->validated());
 
         //Insertamos ids en tabla pivote
-
         $t = TipoUsuario::where('tipo', 'propietario')->pluck('id')->first();
         $usuario->usuarios_tipo()->attach($t); 
 
@@ -108,14 +108,14 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateUser $request, $id)
     {
 
         //validar información
 
         $user = new User;
         $usuario = $user->find($id);
-        $usuario->update($request->all());
+        $usuario->update($request->validated());
 
         return response()->json([
             'data' => $usuario,

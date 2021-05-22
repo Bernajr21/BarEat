@@ -27,16 +27,12 @@ Route::apiResource('usuarios', 'UserController', ['except'=>['index']]);
 Route::post('login', 'UserController@login');
 Route::apiResource('usuarios.tipos', 'UserTipoController', ['except'=>['index']]);
 Route::apiResource('usuario.establecimiento.reserva', 'UserEstablecimientoReservaController', ['only'=>['store', 'show', 'delete']]);
-Route::apiResource('usuario.establecimiento', 'UserEstablecimientoController', ['only'=>['store']]);
+Route::apiResource('usuario.establecimiento', 'UserEstablecimientoController', ['only'=>['store', 'update']]);
 Route::apiResource('usuario.establecimiento.puntuacion', 'UserPuntuacionEstablecimientoController', ['only'=>['store']]);
 Route::apiResource('usuario.producto.puntuacion', 'UserPuntuacionProductoController', ['only'=>['store']]);
 
 //controlador ProductosPuntuaciónController
 Route::apiResource('producto.puntuaciones', 'ProductoPuntuacionController', ['only'=>['index']]);
-
-
-//Solo de prueba. No necesario para la app
-//Route::apiResource('productos', 'ProductoController'); //Solo la puntuación teniendo en cuenta el establecimiento
 
 
 
