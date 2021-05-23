@@ -29,7 +29,7 @@ class StoreEstablecimiento extends FormRequest
             'nombre_establecimiento' => 'required',
             'descripcion_establecimiento' => 'required',
             'dirección_establecimiento' => 'required',
-            'num_telefono' => 'required|unique:establecimientos|integer', //RegExp para formato telf (móvil o fijo?)
+            'num_telefono' => 'required|integer', //RegExp para formato telf (móvil o fijo?)
             'email' => 'required|unique:establecimientos|email',
             'tipo_establecimiento' => 'required',
             //'nif' => 'required', //RegExp para formato NIF
@@ -46,7 +46,6 @@ class StoreEstablecimiento extends FormRequest
     
             'num_telefono.required' => 'El :attribute es obligatorio.',
             'num_telefono.integer' => 'El :attribute debe ser un número de teléfono válido.',
-            'num_telefono.unique' => 'El :attribute ya existe.',
 
             'email.required' => 'El :attribute es obligatorio.',
             'email.unique' => 'El :attribute ya está registrado.',

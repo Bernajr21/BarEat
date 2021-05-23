@@ -15,10 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 //ESTABLECIMIENTOS
-Route::apiResource('establecimientos', 'EstablecimientoController', ['only'=>['index', 'show']]);
+Route::apiResource('establecimientos', 'EstablecimientoController', ['only'=>['index', 'show', 'update']]);
 Route::apiResource('establecimiento.imagenes', 'EstablecimientoImagenController', ['except'=>['update']]);
 Route::apiResource('establecimiento.puntuaciones', 'EstablecimientoPuntuacionController', ['only'=>['index']]);
-Route::apiResource('establecimiento.productos', 'EstablecimientoProductoController');
+Route::apiResource('establecimiento.productos', 'EstablecimientoProductoController', ['except'=>['update']]);
 Route::apiResource('establecimiento.reservas', 'EstablecimientoReservaController', ['only'=>['index']]);
 Route::apiResource('establecimiento.carta', 'EstablecimientoCartaController', ['only'=>['store', 'show']]);
 
@@ -27,11 +27,12 @@ Route::apiResource('usuarios', 'UserController', ['except'=>['index']]);
 Route::post('login', 'UserController@login');
 Route::apiResource('usuarios.tipos', 'UserTipoController', ['except'=>['index']]);
 Route::apiResource('usuario.establecimiento.reserva', 'UserEstablecimientoReservaController', ['only'=>['store', 'show', 'delete']]);
-Route::apiResource('usuario.establecimiento', 'UserEstablecimientoController', ['only'=>['store', 'update']]);
+Route::apiResource('usuario.establecimiento', 'UserEstablecimientoController', ['only'=>['store']]);
 Route::apiResource('usuario.establecimiento.puntuacion', 'UserPuntuacionEstablecimientoController', ['only'=>['store']]);
 Route::apiResource('usuario.producto.puntuacion', 'UserPuntuacionProductoController', ['only'=>['store']]);
 
-//controlador ProductosPuntuaciónController
+//PRODUCTOS
+Route::apiResource('producto', 'ProductoController', ['only'=>['update']]);
 Route::apiResource('producto.puntuaciones', 'ProductoPuntuacionController', ['only'=>['index']]);
 
 

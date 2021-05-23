@@ -79,31 +79,6 @@ class EstablecimientoProductoController extends Controller
         return $producto;
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateProducto $request, $establecimiento_id, $producto_id)
-    {
-        //Validar datos
-        
-        //Obtenemos datos del establecimiento
-        $establecimiento = Establecimiento::find($establecimiento_id);
-        //Obtenemos la carta para utilizar posteriormente su id
-        $carta = $establecimiento->carta()->where('establecimiento_id', $establecimiento_id)->first();
-
-        //Actualizar un producto en concreto de un establecimiento determinado
-        //Haciendo uso de la id del producto y la id de la carta
-        $producto = Producto::where('id', $producto_id)->where('carta_id', $carta->id)->first();
-        $producto->update($request->validated());
-
-        return response()->json([
-            'data'=>$producto,
-            'message'=>'Registro realizado correctamente'], 201);
-    }
 
     /**
      * Remove the specified resource from storage.
@@ -114,8 +89,6 @@ class EstablecimientoProductoController extends Controller
     public function destroy($establecimiento_id, $producto_id)
     {
         //Comprobar si existe el producto que buscamos
-
-        //Problemas con constraint
 
         //Eliminar producto
         $producto = Establecimiento::find($establecimiento_id)->productos_carta()->find($producto_id)->delete();
