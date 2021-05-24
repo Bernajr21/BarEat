@@ -2,18 +2,37 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\BaseResource;
 
-class EstablecimientoResource extends JsonResource
+class EstablecimientoResource extends BaseResource
 {
-    /**
-     * Transform the resource into an array.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
-    public function toArray($request)
+    public function generateLinks($request)
     {
-        return parent::toArray($request);
+        return [
+            [
+                'rel' => 'self',
+                'href' => route('establecimientos.show', $this->id),
+            ],
+            [
+                'rel' => 'establecimiento.imagenes',
+                'href' => route('establecimiento.imagenes.index', $this->id),
+            ],
+            [
+                'rel' => 'establecimiento.puntuaciones',
+                'href' => route('establecimiento.puntuaciones.index', $this->id),
+            ],
+            [
+                'rel' => 'establecimiento.productos',
+                'href' => route('establecimiento.productos.index', $this->id),
+            ],
+            [
+                'rel' => 'establecimiento.reservas',
+                'href' => route('establecimiento.reservas.index', $this->id),
+            ],
+            [
+                'rel' => 'carta',
+                'href' => route('carta.show', $this->id),
+            ],
+        ];
     }
 }

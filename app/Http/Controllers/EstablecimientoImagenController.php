@@ -18,7 +18,6 @@ class EstablecimientoImagenController extends Controller
         //Mostrar imágenes del establecimiento
         $imgs = $establecimiento->imagenes()->get();
         return $imgs;
-
     }
 
     /**

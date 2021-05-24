@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Http\Resources\EstablecimientoResource;
 
 class Establecimiento extends Model
 {
+    public $resource = EstablecimientoResource::class;
+
     const TIPO_ESTABL_1 = 'Bar';
     const TIPO_ESTABL_2 = 'Cafetería';
     const TIPO_ESTABL_3 = 'Restaurante';

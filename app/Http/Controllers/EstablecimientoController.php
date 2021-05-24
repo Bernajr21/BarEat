@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Establecimiento;
 use Illuminate\Http\Request;
 use App\Http\Requests\UpdateEstablecimiento;
+use App\Http\Resources\EstablecimientoResource;
+
 
 class EstablecimientoController extends Controller
 {
@@ -18,6 +20,22 @@ class EstablecimientoController extends Controller
         //Mostrar establecimientos
         $establecimientos = Establecimiento::all();
         return $establecimientos;
+    }
+
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($establecimiento_id)
+    {
+        $establecimiento = Establecimiento::find($establecimiento_id);
+        //return $establecimiento;
+        return new EstablecimientoResource($establecimiento);
+
+
     }
 
     /**

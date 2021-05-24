@@ -6,7 +6,6 @@ use App\Http\Resources\BaseResource;
 
 class UserResource extends BaseResource
 {
-  
     public function generateLinks($request)
     {
         return [
