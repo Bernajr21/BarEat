@@ -83,7 +83,7 @@ class User extends Model
     //Relacionamos la tabla usuarios con la tabla reservas
     public function reserva()
     {
-        return $this->hasMany('App\ReservaTipo');
+        return $this->hasMany('App\Reserva');
     }
 
     //Relación usuario - puntuaciones de los establecimientos

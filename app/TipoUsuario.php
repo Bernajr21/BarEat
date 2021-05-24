@@ -20,7 +20,7 @@ class TipoUsuario extends Model
 
     //Campos ocultos
     protected $hidden = [
-        'created_at', 'updated_at',
+        'created_at', 'updated_at', 'pivot',
     ];
 
     /**RELACIONES ENTRE TABLAS */
