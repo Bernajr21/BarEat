@@ -17,17 +17,13 @@ class UserResource extends BaseResource
                 'rel' => 'usuarios.tipos',
                 'href' => route('usuarios.tipos.index', $this->id),
             ],
-            /*[
-                'rel' => 'usuario.establecimiento.reserva',
-                'href' => route('usuario.establecimiento.reserva.index', $this->id),
-            ],*/
-            /*[
-                'rel' => 'self',
-                'href' => route('usuarios.show', $this->id),
-            ],
             [
-                'rel' => 'self',
-                'href' => route('usuarios.show', $this->id),
+                'rel' => 'usuario.reservas',
+                'href' => route('usuario.reservas.index', $this->id),
+            ],
+            /*[
+                'rel' => 'establecimiento.usuario',
+                'href' => route('establecimiento.usuario.index', $this->id),
             ],*/
         ];
     }

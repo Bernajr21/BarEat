@@ -29,10 +29,12 @@ Route::apiResource('carta', 'CartaController', ['only'=>['show']]);
 Route::apiResource('usuarios', 'UserController', ['except'=>['index']]);
 Route::post('login', 'UserController@login');
 Route::apiResource('usuarios.tipos', 'UserTipoController', ['only'=>['index']]);
-Route::apiResource('usuario.establecimiento.reserva', 'UserEstablecimientoReservaController', ['only'=>['index','store', 'delete']]);
+Route::apiResource('usuario.establecimiento.reserva', 'UserEstablecimientoReservaController', ['only'=>['store', 'delete']]);
 Route::apiResource('usuario.establecimiento', 'UserEstablecimientoController', ['only'=>['store']]);
 Route::apiResource('usuario.establecimiento.puntuacion', 'UserPuntuacionEstablecimientoController', ['only'=>['store']]);
 Route::apiResource('usuario.producto.puntuacion', 'UserPuntuacionProductoController', ['only'=>['store']]);
+Route::apiResource('usuario.reservas', 'UserReservaController', ['only'=>['index', 'show']]);
+
 
 //PRODUCTOS
 Route::apiResource('producto', 'ProductoController', ['only'=>['update']]);
