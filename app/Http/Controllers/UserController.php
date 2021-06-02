@@ -57,10 +57,9 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(StoreUser $request)
-    {
-        //Validar usuario
-        
-        bcrypt($request['password']); //Funciona así?? Primero tendría que validarla
+    {   
+        $data = $request->validated();
+        $data['password'] = bcrypt($data['password']);
 
         //Token jwt
         $data_token = [
@@ -69,10 +68,8 @@ class UserController extends Controller
         $token = new Token($data_token);
         $token = $token->encode();
 
-        //dd($request->validated());
-
         //Crear usuario
-        $usuario = User::create($request->validated());
+        $usuario = User::create($data);
 
         //Insertamos ids en tabla pivote
         $t = TipoUsuario::where('tipo', 'propietario')->pluck('id')->first();

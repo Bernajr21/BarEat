@@ -39,8 +39,8 @@ class StoreUser extends FormRequest
         return [
 
             'nombre.required' => 'El :attribute es obligatorio.',
-            'apellidos.required' => 'Los :attribute es obligatorio.',
-            'password.required' => 'La :attribute es obligatorio.',
+            'apellidos.required' => 'Los :attribute son obligatorios.',
+            'password.required' => 'La :attribute es obligatoria.',
             
             'num_telefono.integer' => 'El :attribute debe ser un número de teléfono válido.',
 
