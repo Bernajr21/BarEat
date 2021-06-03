@@ -31,8 +31,8 @@ Route::post('login', 'UserController@login');
 Route::apiResource('usuarios.tipos', 'UserTipoController', ['only'=>['index']]);
 Route::apiResource('usuario.establecimiento.reserva', 'UserEstablecimientoReservaController', ['only'=>['store', 'delete']]);
 Route::apiResource('usuario.establecimiento', 'UserEstablecimientoController', ['only'=>['store']]);
-Route::apiResource('usuario.establecimiento.puntuacion', 'UserPuntuacionEstablecimientoController', ['only'=>['store']]);
-Route::apiResource('usuario.producto.puntuacion', 'UserPuntuacionProductoController', ['only'=>['store']]);
+Route::apiResource('usuario.establecimiento.puntuacion', 'UserPuntuacionEstablecimientoController', ['only'=>['index','store']]);
+Route::apiResource('usuario.producto.puntuacion', 'UserPuntuacionProductoController', ['only'=>['index','store']]);
 Route::apiResource('usuario.reservas', 'UserReservaController', ['only'=>['index', 'show']]);
 
 
