@@ -43,12 +43,12 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    /*public function index()
     {
         //Mostrar usuarios
         $usuarios = User::all();
         return $usuarios;
-    }
+    }*/
 
     /**
      * Store a newly created resource in storage.
