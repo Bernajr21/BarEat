@@ -19,7 +19,9 @@ class UserTipoController extends Controller
         $user = User::find($id);
         $user_tipo = $user->usuarios_tipo()->get();
 
-        return $user_tipo;
+        return [
+            'Usuario' => $user,
+            'Tipo de usuario' => $user_tipo];
     }
 
 }
