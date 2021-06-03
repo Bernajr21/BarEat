@@ -29,6 +29,7 @@ class UserController extends Controller
             $token = $token->encode();
 
             return response()->json([
+                'data'=>$user,
                 "token" => $token
             ], 200);
         }
