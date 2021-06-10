@@ -32,7 +32,11 @@ Route::apiResource('usuarios.tipos', 'UserTipoController', ['only'=>['index']]);
 Route::apiResource('usuario.establecimiento.reserva', 'UserEstablecimientoReservaController', ['only'=>['store', 'delete']]);
 Route::apiResource('usuario.establecimiento', 'UserEstablecimientoController', ['only'=>['store']]);
 Route::apiResource('usuario.establecimiento.puntuacion', 'UserPuntuacionEstablecimientoController', ['only'=>['index','store']]);
+//puntuaciones establecimientos
+//Route::apiResource('usuario.puntuaciones', 'UserPuntuacionesController', ['only'=>['index']]);
 Route::apiResource('usuario.producto.puntuacion', 'UserPuntuacionProductoController', ['only'=>['index','store']]);
+//puntuaciones productos
+//Route::apiResource('usuario.puntuaciones', 'UserPuntuacionProductoController', ['only'=>['index','store']]);
 Route::apiResource('usuario.reservas', 'UserReservaController', ['only'=>['index']]);
 
 

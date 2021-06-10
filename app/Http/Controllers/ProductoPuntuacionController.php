@@ -14,8 +14,7 @@ class ProductoPuntuacionController extends Controller
      */
     public function index(Producto $producto)
     {
-        //Mostrar las puntuaciones de un producto determinado
-        $puntuaciones = $producto->puntuaciones_producto()->where('carta_id', 2)->get();
+        $puntuaciones = $producto->puntuaciones_producto()->get();
         return $puntuaciones;
     }
 
