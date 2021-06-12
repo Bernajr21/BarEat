@@ -69,4 +69,19 @@ class EstablecimientoController extends Controller
             'message' => 'Actualización realización correctamente'], 200);
     }
 
+    /**
+     * Remove the specified resource from storage.
+     * 
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($establecimiento_id)
+    {
+        $establecimiento = Establecimiento::find($establecimiento_id)->delete();
+
+        return response()->json([
+            'data' => $establecimiento,
+            'message' => 'Establecimiento eliminado correctamente'], 200);
+    }
+
 }
