@@ -38,11 +38,12 @@ class UserPuntuacionEstablecimientoController extends Controller
      */
     public function store(Request $request, $user_id, $establecimiento_id)
     {
+        
         //Almacenar puntuación del establecimiento
         $puntuacionEstablecimiento = PuntuacionEstablecimiento::create([
             'user_id' => $user_id,
             'establecimiento_id' => $establecimiento_id,
-            'puntuacion_establecimiento' => $request['puntuación_establecimiento'],
+            'puntuacion_establecimiento' => $request['puntuacion_establecimiento'],
             'comentario' => $request['comentario'],
         ]);
 
