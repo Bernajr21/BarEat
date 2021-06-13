@@ -50,6 +50,8 @@ class UpdateEstablecimiento extends FormRequest
             'email.required' => 'El :attribute es obligatorio.',
             'email.unique' => 'El :attribute ya está registrado.',
             'email.email' => 'El :attribute debe tener formato email válido.',
+
+            'tipo_establecimiento.required' => 'El :attribute es obligatorio.',
         ];
     }
 

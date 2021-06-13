@@ -61,6 +61,7 @@ class EstablecimientoController extends Controller
             'nif' => $request['nif'],
             'maximo_numero_comensales' => $request['maximo_numero_comensales'],
             'aforo' => $request['aforo'],
+            'ruta_foto_principal' => $request['ruta_foto_principal'],
             'user_id' => $establecimiento->user_id,
         ]);
 

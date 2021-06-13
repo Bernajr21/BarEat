@@ -30,7 +30,7 @@ Route::apiResource('usuarios', 'UserController', ['except'=>['index']]);
 Route::post('login', 'UserController@login');
 Route::apiResource('usuarios.tipos', 'UserTipoController', ['only'=>['index']]);
 Route::apiResource('usuario.establecimiento.reserva', 'UserEstablecimientoReservaController', ['only'=>['store']]);
-Route::apiResource('usuario.establecimiento', 'UserEstablecimientoController', ['only'=>['store', 'delete']]);
+Route::apiResource('usuario.establecimiento', 'UserEstablecimientoController', ['only'=>['store']]);
 Route::apiResource('usuario.establecimiento.puntuacion', 'UserPuntuacionEstablecimientoController', ['only'=>['index','store']]);
 Route::apiResource('usuario.producto.puntuacion', 'UserPuntuacionProductoController', ['only'=>['index','store']]);
 Route::apiResource('usuario.reservas', 'UserReservaController', ['only'=>['index']]);
@@ -39,6 +39,12 @@ Route::apiResource('usuario.reservas', 'UserReservaController', ['only'=>['index
 //PRODUCTOS
 Route::apiResource('producto', 'ProductoController', ['only'=>['update']]);
 Route::apiResource('producto.puntuaciones', 'ProductoPuntuacionController', ['only'=>['index']]);
+
+//PUNTUACIONES ESTABLECIMIENTO
+//Route::apiResource('puntuacion.usuario.estab', 'UserPuntuacionEstablecimientoController', ['only'=>['index','store']]);
+
+//PUNTUACIONES PRODUCTOS
+//Route::apiResource('usuario.producto.puntuacion', 'UserPuntuacionProductoController', ['only'=>['index','store']]);
 
 
 

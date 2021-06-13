@@ -29,6 +29,7 @@ $factory->define(Establecimiento::class, function (Faker $faker) {
         'nif' => Str::random(10),
         'maximo_numero_comensales' => $faker->numberBetween($min = 50, $max = 100),
         'aforo' => 100,
+        'ruta_foto_principal' => $faker->imageUrl($width = 640, $height = 480),
         'puntuacion_media_establecimiento' => 10,
         'user_id' => $u->random()->id, //solo aquellos que sean de tipo propietarios
         //'es_premium' => $faker->randomElement([0, 1]),
