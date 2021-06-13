@@ -33,7 +33,7 @@ Route::apiResource('usuario.establecimiento.reserva', 'UserEstablecimientoReserv
 Route::apiResource('usuario.establecimiento', 'UserEstablecimientoController', ['only'=>['store']]);
 Route::apiResource('usuario.establecimiento.puntuacion', 'UserPuntuacionEstablecimientoController', ['only'=>['index','store']]);
 Route::apiResource('usuario.producto.puntuacion', 'UserPuntuacionProductoController', ['only'=>['index','store']]);
-Route::apiResource('usuario.reservas', 'UserReservaController', ['only'=>['index']]);
+Route::apiResource('usuario.reservas', 'UserReservaController', ['only'=>['index', 'destroy']]);
 
 
 //PRODUCTOS

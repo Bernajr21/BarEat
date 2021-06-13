@@ -95,6 +95,6 @@ class EstablecimientoProductoController extends Controller
 
         return response()->json([
             'data'=>$producto,
-            'message'=>'productro eliminado exitosamente'], 200);
+            'message'=>'Producto eliminado exitosamente'], 200);
     }
 }
