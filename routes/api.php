@@ -41,10 +41,10 @@ Route::apiResource('producto', 'ProductoController', ['only'=>['update']]);
 Route::apiResource('producto.puntuaciones', 'ProductoPuntuacionController', ['only'=>['index']]);
 
 //PUNTUACIONES ESTABLECIMIENTO
-//Route::apiResource('puntuacion.usuario.estab', 'UserPuntuacionEstablecimientoController', ['only'=>['index','store']]);
+Route::apiResource('usuario.puntuaciones_establecimientos', 'UsuarioPuntuacionesEstablecimietos', ['only'=>['index']]);
 
 //PUNTUACIONES PRODUCTOS
-//Route::apiResource('usuario.producto.puntuacion', 'UserPuntuacionProductoController', ['only'=>['index','store']]);
+Route::apiResource('usuario.puntuaciones_productos', 'UsuarioPuntuacionesProductos', ['only'=>['index']]);
 
 
 
