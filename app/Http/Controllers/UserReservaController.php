@@ -14,8 +14,21 @@ class UserReservaController extends Controller
      */
     public function index($user_id)
     {
-        $reserva = User::find($user_id)->reserva()->get();
-        return $reserva;
+        $reservas = User::find($user_id)->reserva()->get();
+       
+        $r = $reservas->all();
+        //dd($r);
+        //dd($r);
+
+        $collection = $reservas->map(function ($v) {
+            $e = $v->establecimiento()->get();
+            return $e;
+        });
+
+        return [
+            'establecimientos' => $collection,
+            'reservas' => $reservas,
+        ];
     }
 
     /**
