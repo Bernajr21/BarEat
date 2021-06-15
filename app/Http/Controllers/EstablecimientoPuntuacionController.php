@@ -14,8 +14,16 @@ class EstablecimientoPuntuacionController extends Controller
      */
     public function index(Establecimiento $establecimiento)
     {
+       
         //Mostrar las puntuaciones de un establecimiento determinado
-        $puntuaciones = $establecimiento->puntuaciones_establecimiento()->get();
+        /*$puntuaciones = $establecimiento->puntuaciones_establecimiento()->get();
+        dd($puntuaciones->with('usuario')->get());
+        return $puntuaciones;*/
+
+
+        
+        $puntuaciones = $establecimiento->puntuaciones_establecimiento()->with('usuario')->get()->all();
+        //dd($puntuaciones);
         return $puntuaciones;
     }
 

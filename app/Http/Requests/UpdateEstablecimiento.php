@@ -32,7 +32,7 @@ class UpdateEstablecimiento extends FormRequest
             'num_telefono' => 'required|integer', //RegExp para formato telf (móvil o fijo?)
             'email' => 'required|unique:establecimientos|email',
             'tipo_establecimiento' => 'required',
-            //'nif' => 'required', //RegExp para formato NIF
+            'nif' => 'required', //RegExp para formato NIF
     
         ];
     }
@@ -52,6 +52,8 @@ class UpdateEstablecimiento extends FormRequest
             'email.email' => 'El :attribute debe tener formato email válido.',
 
             'tipo_establecimiento.required' => 'El :attribute es obligatorio.',
+
+            'nif.required' => 'El NIF es obligatorio',
         ];
     }
 

@@ -62,7 +62,7 @@ class EstablecimientoController extends Controller
             'maximo_numero_comensales' => $request['maximo_numero_comensales'],
             'aforo' => $request['aforo'],
             'ruta_foto_principal' => $request['ruta_foto_principal'],
-            'user_id' => $establecimiento->user_id,
+            'user_id' => $request['user_id'],
         ]);
 
         return response()->json([

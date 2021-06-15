@@ -14,8 +14,13 @@ class ProductoPuntuacionController extends Controller
      */
     public function index(Producto $producto)
     {
-        $puntuaciones = $producto->puntuaciones_producto()->get();
+        /*$puntuaciones = $producto->puntuaciones_producto()->get();
+        return $puntuaciones;*/
+
+        $puntuaciones = $producto->puntuaciones_producto()->with('usuario')->get()->all();
+        //dd($puntuaciones);
         return $puntuaciones;
+
     }
 
 }

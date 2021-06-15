@@ -17,7 +17,7 @@ class Establecimiento extends Model
     protected $fillable = [
         'nombre_establecimiento', 'descripcion_establecimiento', 'dirección_establecimiento', 'num_telefono', 'email',
         'latitud', 'longitud', 'tipo_establecimiento', 'maximo_numero_comensales', 'aforo',
-        'puntuacion_media_establecimiento', /*'ruta_foto_principal',*/'nif', 'es_premium', 'user_id',
+        'puntuacion_media_establecimiento', 'ruta_foto_principal', 'nif', 'es_premium', 'user_id',
     ];
 
     //Campos ocultos

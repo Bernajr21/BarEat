@@ -46,7 +46,7 @@ class EstablecimientoProductoController extends Controller
 
         $establecimiento_id = $establecimiento->id;
         $carta_id = $establecimiento->carta()->where('establecimiento_id', $establecimiento_id)->first();
-
+//dd($carta_id->id);
         $request->validated();
         //Almacenar productos del establecimiento
         $producto = Producto::create([

@@ -71,11 +71,11 @@ class UserController extends Controller
 
         //Crear usuario
         $usuario = User::create($data);
-
+        //dd($usuario);
         //Insertamos ids en tabla pivote
         $t = TipoUsuario::where('tipo', 'propietario')->pluck('id')->first();
         $usuario->usuarios_tipo()->attach($t); 
-
+        //dd($t);
         return response()->json([
             'data'=>$usuario,
             'message'=>'Registro realizado correctamente'], 201);

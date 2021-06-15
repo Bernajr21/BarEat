@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Reserva;
 use Illuminate\Http\Request;
 
 class UserReservaController extends Controller
@@ -14,21 +15,10 @@ class UserReservaController extends Controller
      */
     public function index($user_id)
     {
-        $reservas = User::find($user_id)->reserva()->get();
-       
-        $r = $reservas->all();
-        //dd($r);
-        //dd($r);
-
-        $collection = $reservas->map(function ($v) {
-            $e = $v->establecimiento()->get();
-            return $e;
-        });
-
-        return [
-            'establecimientos' => $collection,
-            'reservas' => $reservas,
-        ];
+        
+        $reservas = User::find($user_id)->reserva()->with('establecimiento')->get()->all();
+        return $reservas;
+        
     }
 
     /**

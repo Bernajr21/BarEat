@@ -14,7 +14,8 @@ class UsuarioPuntuacionesEstablecimietos extends Controller
      */
     public function index($user_id)
     {
-        $puntuaciones = User::find($user_id)->puntuacion_establecimientos()->get();
+        $puntuaciones = User::find($user_id)->puntuacion_establecimientos()->with('establecimiento')->get()->all();
+       
         return $puntuaciones;
     }
 

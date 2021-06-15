@@ -17,7 +17,7 @@ class UserEstablecimientoController extends Controller
     public function store(StoreEstablecimiento $request, $usuario_id)
     {
        $request->validated();
-        //Almacenar imagen del establecimiento
+        //Almacenar establecimiento
         $establecimiento = Establecimiento::create([
             "user_id" => $usuario_id,
             'nombre_establecimiento' => $request['nombre_establecimiento'],

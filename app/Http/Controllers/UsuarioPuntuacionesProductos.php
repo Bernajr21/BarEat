@@ -14,8 +14,10 @@ class UsuarioPuntuacionesProductos extends Controller
      */
     public function index($user_id)
     {
-        $puntuaciones = User::find($user_id)->puntuacion_productos()->get();
+        $puntuaciones = User::find($user_id)->puntuacion_productos()->with('producto')->get()->all();
+        
         return $puntuaciones;
+
     }
 
 }
