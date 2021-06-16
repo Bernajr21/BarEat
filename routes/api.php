@@ -40,11 +40,21 @@ Route::apiResource('usuario.reservas', 'UserReservaController', ['only'=>['index
 Route::apiResource('producto', 'ProductoController', ['only'=>['update']]);
 Route::apiResource('producto.puntuaciones', 'ProductoPuntuacionController', ['only'=>['index']]);
 
-//PUNTUACIONES ESTABLECIMIENTO
+//PUNTUACIONES USUARIO - ESTABLECIMIENTOS
 Route::apiResource('usuario.puntuaciones_establecimientos', 'UsuarioPuntuacionesEstablecimietos', ['only'=>['index']]);
 
-//PUNTUACIONES PRODUCTOS
+//PUNTUACIONES USUARIOS - PRODUCTOS
 Route::apiResource('usuario.puntuaciones_productos', 'UsuarioPuntuacionesProductos', ['only'=>['index']]);
+
+//PUNTUACIONES ESTABLECIMIENTOS
+Route::apiResource('puntuaciones_establecimientos', 'PuntuacionesEstablecimientosController', ['only'=>['update', 'destroy']]);
+
+//PUNTUACIONES PRODUCTOS
+Route::apiResource('puntuaciones_productos', 'PuntuacionesProductosController', ['only'=>['update', 'destroy']]);
+
+
+
+
 
 
 
