@@ -28,7 +28,7 @@ class User extends Model
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token', 'created_at', 'updated_at',
+        'password', 'remember_token', 'created_at', 'updated_at', 'pivot',
     ];
 
     /**
@@ -88,12 +88,12 @@ class User extends Model
 
     //Relación usuario - puntuaciones de los establecimientos
     public function puntuacion_establecimientos(){
-        return $this->hasMany('App\PuntuacionEstablecimiento');
+        return $this->belongsToMany('App\Establecimiento', 'puntuacion_establecimientos');
     }
 
     //Relación usuario - puntuaciones de los productos
     public function puntuacion_productos(){
-        return $this->hasMany('App\PuntuacionProducto');
+        return $this->belongsToMany('App\Producto', 'puntuacion_productos');
     }
 
     //Obtenemos las imágenes del usuario

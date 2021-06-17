@@ -22,7 +22,7 @@ class Establecimiento extends Model
 
     //Campos ocultos
     protected $hidden = [
-        'created_at', 'updated_at',
+        'created_at', 'updated_at', 'pivot'
     ];
 
     /**RELACIONES ENTRE TABLAS */
@@ -68,5 +68,10 @@ class Establecimiento extends Model
     //Obtenemos los anuncios publicados por el establecimiento
     public function anuncios(){
         return $this->hasMany('App\Anuncio');
+    }
+
+    //Obtenemos los usuarios que han realizado la puntuación
+    public function usuarios_puntuacion(){
+        return $this->belongsToMany('App\User', 'puntuacion_establecimientos');
     }
 }
