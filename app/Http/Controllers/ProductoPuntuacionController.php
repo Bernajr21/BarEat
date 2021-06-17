@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Producto;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,11 @@ class ProductoPuntuacionController extends Controller
      */
     public function index(Producto $producto)
     {
-        $puntuaciones = $producto->puntuaciones_producto()->get();
+        /*$puntuaciones = $producto->puntuaciones_producto()->get();
+        return $puntuaciones;*/
+
+        $puntuaciones = $producto->puntuaciones_producto()->with('usuario')->get()->all();
+        //dd($puntuaciones);
         return $puntuaciones;
     }
 
