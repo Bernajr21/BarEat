@@ -21,7 +21,7 @@ class Producto extends Model
 
     //Campos ocultos
     protected $hidden = [
-        'created_at', 'updated_at', 'pivot',
+        'created_at', 'updated_at',
     ];
 
 
@@ -40,7 +40,7 @@ class Producto extends Model
 
     //Obtenemos los usuarios que han realizado la puntuación
     public function usuarios_puntuacion(){
-        return $this->belongsToMany('App\User', 'puntuacion_productos');
+        return $this->hasOneThrough('App\User', 'App\Puntuacion_Producto');
     }
 
     //Obtenemos las imágenes del producto
