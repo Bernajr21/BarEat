@@ -61,7 +61,7 @@ class PuntuacionesProductosController extends Controller
         ]);
 
         return response()->json([
-            'data' => $producto,
+            'data' => $puntuacion,
             'message' => 'Actualización realización correctamente'], 200);
     }
 

@@ -15,9 +15,23 @@ class PuntuacionesEstablecimientosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $puntuacion_id)
     {
-        //
+        
+        $puntuacion = PuntuacionEstablecimiento::find($puntuacion_id);
+        //dd($request['puntuacion_producto']);
+        $request->validate([]);
+        
+        $puntuacion->update([
+            'user_id' => $puntuacion->user_id,
+            'producto_id' => $puntuacion->establecimiento_id,
+            'puntuacion_establecimiento' => $request['puntuacion_establecimiento'],
+            'comentario' => $request['comentario'],
+        ]);
+
+        return response()->json([
+            'data' => $puntuacion,
+            'message' => 'Actualización realización correctamente'], 200);
     }
 
     /**
