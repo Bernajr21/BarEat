@@ -28,10 +28,12 @@ $factory->define(Establecimiento::class, function (Faker $faker) {
                                 Establecimiento::TIPO_ESTABL_2, Establecimiento::TIPO_ESTABL_3]),
         'nif' => Str::random(10),
         'maximo_numero_comensales' => $faker->numberBetween($min = 50, $max = 100),
-        'aforo' => 100,
+        'aforo' => $faker->numberBetween($min = 20, $max = 100),
         'ruta_foto_principal' => $faker->imageUrl($width = 640, $height = 480),
-        'puntuacion_media_establecimiento' => 10,
+        'puntuacion_media_establecimiento' => $faker->numberBetween($min = 4, $max = 10),
         'user_id' => $u->random()->id, //solo aquellos que sean de tipo propietarios
         //'es_premium' => $faker->randomElement([0, 1]),
+        'total_puntuaciones' => $faker->numberBetween($min = 5, $max = 30),
+
     ];
 });

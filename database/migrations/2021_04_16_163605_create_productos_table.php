@@ -25,6 +25,8 @@ class CreateProductosTable extends Migration
             $table->foreignId('carta_id')->constrained('cartas')->onDelete('cascade');;
             $table->integer('puntuacion_media_producto')->nullable();
             $table->string('ruta_foto_principal')->nullable();
+            $table->integer('total_puntuaciones')->nullable();
+
 
             $table->timestamps();
         });

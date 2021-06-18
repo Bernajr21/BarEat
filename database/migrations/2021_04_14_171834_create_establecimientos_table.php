@@ -33,6 +33,7 @@ class CreateEstablecimientosTable extends Migration
             $table->integer('puntuacion_media_establecimiento')->nullable();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->boolean('es_premium')->nullable();
+            $table->integer('total_puntuaciones')->nullable();
 
             $table->timestamps();
             

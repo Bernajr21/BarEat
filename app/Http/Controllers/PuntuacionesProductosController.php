@@ -50,7 +50,7 @@ class PuntuacionesProductosController extends Controller
     {
         
         $puntuacion = PuntuacionProducto::find($puntuacion_id);
-        dd($request['puntuacion_producto']);
+        //dd($request['puntuacion_producto']);
         $request->validate([]);
         
         $puntuacion->update([

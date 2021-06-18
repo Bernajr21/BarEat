@@ -19,5 +19,7 @@ $factory->define(Producto::class, function (Faker $faker) {
         'carta_id' => Carta::all()->random()->id,
         'puntuacion_media_producto' => 10,
         'ruta_foto_principal'=> $faker->imageUrl($width = 640, $height = 480),
+        'total_puntuaciones' => $faker->numberBetween($min = 5, $max = 30),
+
     ];
 });
