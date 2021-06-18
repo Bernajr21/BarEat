@@ -22,13 +22,19 @@ class EstablecimientoPuntuacionController extends Controller
 
         $puntuaciones = $establecimiento->usuarios_puntuacion()->with(['puntuacion_establecimientos'=>function($query) use($establecimiento){
             $query->where('puntuacion_establecimientos.establecimiento_id', $establecimiento->id );
-        }])->where('establecimiento_id', $establecimiento->id)->get();
+        }])->get()->all();
    
         return $puntuaciones;
 
 
+
+        $puntuaciones = $producto->usuarios_puntuacion()->with(['puntuacion_establecimientos'=>function($query) use($producto){
+            $query->where('puntuacion_establecimientos.establecimiento_id', $producto->id );
+        }])->get()->all();
+
+
         
-        $puntuaciones = $establecimiento->puntuaciones_establecimiento()->with('usuario')->get()->all();
+        //$puntuaciones = $establecimiento->puntuaciones_establecimiento()->with('usuario')->get()->all();
         //dd($puntuaciones);
         return $puntuaciones;
     }

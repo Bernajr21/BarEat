@@ -18,9 +18,13 @@ class ProductoPuntuacionController extends Controller
         /*$puntuaciones = $producto->puntuaciones_producto()->get();
         return $puntuaciones;*/
         
-        $puntuaciones = $producto->usuarios_puntuacion()->with(['puntuacion_productos'=>function($query) use($producto){
+        /*$puntuaciones = $producto->usuarios_puntuacion()->with(['puntuacion_productos'=>function($query) use($producto){
                 $query->where('puntuacion_productos.producto_id', $producto->id );
-        }])->where('producto_id', $producto->id)->get();
+        }])->where('producto_id', $producto->id)->get();*/
+
+        $puntuaciones = $producto->usuarios_puntuacion()->with(['puntuacion_productos'=>function($query) use($producto){
+            $query->where('puntuacion_productos.producto_id', $producto->id );
+        }])->get()->all();
        
         return $puntuaciones;
     }

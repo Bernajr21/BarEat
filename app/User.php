@@ -88,12 +88,12 @@ class User extends Model
 
     //Relación usuario - puntuaciones de los establecimientos
     public function puntuacion_establecimientos(){
-        return $this->belongsToMany('App\Establecimiento', 'puntuacion_establecimientos');
+        return $this->hasMany('App\PuntuacionEstablecimiento');
     }
 
     //Relación usuario - puntuaciones de los productos
     public function puntuacion_productos(){
-        return $this->belongsToMany('App\Producto', 'puntuacion_productos');
+        return $this->hasMany('App\PuntuacionProducto');
     }
 
     //Obtenemos las imágenes del usuario
